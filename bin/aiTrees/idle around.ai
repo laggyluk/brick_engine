@@ -1,0 +1,9 @@
+<Root>
+  <item0 name="idle around" type="1" func="" params="" notes="" sub="false" skip="false" x="209.2734375" y="20">
+    <item1 name="set idle anchor pt" type="6" func="saveIdlePoint" params="V1" notes="" sub="false" skip="false" x="-135" y="135"/>
+    <item2 name="repeat" type="1" func="1" params="" notes="" sub="false" skip="false" x="80" y="70">
+      <item3 name="wonder around" type="6" func="idleAroundPoint" params="12" notes="" sub="false" skip="false" x="-87" y="62"/>
+      <item4 name="wait" type="6" func="wait" params="3&#xA;5" notes="" sub="false" skip="false" x="92" y="67"/>
+    </item2>
+  </item0>
+</Root>

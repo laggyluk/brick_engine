@@ -1,0 +1,3656 @@
+
+UI_INCLUDE
+{
+string File1 = "UICoreWindows.def"
+string File2 = "UICoreControls.def"
+}
+
+UI_WINDOWDEF MapWindow
+{
+string PropertySet = "SizableWindow"
+bool Singleton = true
+string Title = "Map"
+string titleicon = "win_icon_map.png"
+float W = 306.0
+float H = 306.0
+float MinWidth = 260.0
+float MinHeight = 130.0
+bool QuickClosable = true
+int CacheSize = 1
+
+string MapPath = "resources/interface/maps"
+
+//Top Controls Container ------------------------------------------------
+UI_WINDOWDEF Window
+{
+string Name = "TopContainer"
+float X = 0.0
+float Y = 0.0
+float RightParentOffset = 0.0
+float H = 26.0
+int Anchor = 7
+
+UI_WINDOWDEF Image
+{
+string Name = "Border"
+float X = 0.0
+float H = 1.0
+float RightParentOffset = 0.0
+float BottomParentOffset = 0.0
+int Anchor = 13
+
+string image = "border_horz_01.png"
+bool Tiled = false
+}
+
+// Navigation Buttons ------------------------------------------------
+
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "PlaceMarkerButton"
+string Tooltip = "Place New Marker"
+string Graphic = "graphic19_points.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+float X = 4.0
+float Y = 4.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "SearchButton"
+string Tooltip = "Search for something on the map by name"
+string Graphic = "graphic19_search.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+float X = 26.0
+float Y = 4.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "SearchAgainButton"
+string Tooltip = "Continue the last search"
+string Graphic = "graphic19_arrow2_right.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+float X = 48.0
+float Y = 4.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+
+UI_WINDOWDEF Window
+{
+string Name = "MouseHolder" // Needed for the tutorial
+
+float X = 74.0
+float W = 130.0
+float Y = 6.0
+float H = 12.0
+
+UI_WINDOWDEF Text
+{
+string PropertySet = "FontTahomaGold8"
+string Name = "MousePosText"
+
+float X = 0.0
+float RightParentOffset = 0.0
+float Y = 0.0
+float BottomParentOffset = 0.0
+}
+}
+
+UI_WINDOWDEF Image
+{
+float Y = 5.0
+float H = 16.0
+float W = 100.0
+float RightParentOffset = 90.0
+int Anchor = 6
+
+float ColorR = 0.0
+float ColorG = 0.0
+float ColorB = 0.0
+float Alpha = 1.0
+}
+
+UI_WINDOWDEF Dropdown
+{
+string PropertySet = "Dropdown"
+string Name = "MapSelectDropdown"
+float Y = 5.0
+float H = 16.0
+float W = 125.0
+float RightParentOffset = 90.0
+int Anchor = 6
+
+float Low = 0.0
+float High = 100.0
+}
+
+UI_WINDOWDEF Checkbox
+{
+string PropertySet = "Checkbox"
+string Name = "StickToPlayerCheck"
+string Text = "Auto-Center"
+float Y = 5.0
+float RightParentOffset = 4.0
+float H = 16.0
+float W = 82.0
+int Anchor = 6
+string ToolTip = "Keep the map centered on your character as you move."
+}
+}
+
+// Left Container ------------------------------------------------
+UI_WINDOWDEF Window
+{
+string Name = "LeftContainer"
+float X = 0.0
+float Y = 26.0
+float BottomParentOffset = 0.0
+float W = 48.0
+int Anchor = 11
+
+UI_WINDOWDEF Image
+{
+string Name = "Border"
+float Y = 0.0
+float W = 1.0
+float RightParentOffset = 0.0
+float BottomParentOffset = 0.0
+int Anchor = 14
+
+string image = "border_vert_01.png"
+}
+
+UI_WINDOWDEF Window
+{
+float X = 0.0
+float Y = 0.0
+float BottomParentOffset = 31.0
+float RightParentOffset = 0.0
+int Anchor = 15
+
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "ZoomInButton"
+string Tooltip = "Zoom In"
+string Graphic = "graphic19_add.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+float X = 3.0
+float Y = 5.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "ZoomOutButton"
+string Tooltip = "Zoom Out"
+string Graphic = "graphic19_delete.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+float X = 25.0
+float Y = 5.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+
+UI_WINDOWDEF Image
+{
+string Name = "Border"
+float Y = 25.0
+float H = 1.0
+float RightParentOffset = 0.0
+float X = 0.0
+int Anchor = 7
+
+string image = "border_horz_01.png"
+}
+
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "LayerVisButton"
+int Index = 0
+string Graphic = "graphic19_edit.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+string ImageDown = "button19_square_toggled.png"
+bool ToggleMode = true
+float X = 3.0
+float Y = 28.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "LayerVisButton"
+int Index = 1
+string Graphic = "graphic19_edit.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+string ImageDown = "button19_square_toggled.png"
+bool ToggleMode = true
+float X = 25.0
+float Y = 28.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "LayerVisButton"
+int Index = 2
+string Graphic = "graphic19_edit.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+string ImageDown = "button19_square_toggled.png"
+bool ToggleMode = true
+float X = 3.0
+float Y = 53.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "LayerVisButton"
+int Index = 3
+string Graphic = "graphic19_edit.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+string ImageDown = "button19_square_toggled.png"
+bool ToggleMode = true
+float X = 25.0
+float Y = 53.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "LayerVisButton"
+int Index = 4
+string Graphic = "graphic19_edit.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+string ImageDown = "button19_square_toggled.png"
+bool ToggleMode = true
+float X = 3.0
+float Y = 78.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "LayerVisButton"
+int Index = 5
+string Graphic = "graphic19_edit.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+string ImageDown = "button19_square_toggled.png"
+bool ToggleMode = true
+float X = 25.0
+float Y = 78.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "LayerVisButton"
+int Index = 6
+string Graphic = "graphic19_edit.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+string ImageDown = "button19_square_toggled.png"
+bool ToggleMode = true
+float X = 3.0
+float Y = 103.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "LayerVisButton"
+int Index = 7
+string Graphic = "graphic19_edit.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+string ImageDown = "button19_square_toggled.png"
+bool ToggleMode = true
+float X = 25.0
+float Y = 103.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "LayerVisButton"
+int Index = 8
+string Graphic = "graphic19_edit.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+string ImageDown = "button19_square_toggled.png"
+bool ToggleMode = true
+float X = 3.0
+float Y = 128.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "LayerVisButton"
+int Index = 9
+string Graphic = "graphic19_edit.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+string ImageDown = "button19_square_toggled.png"
+bool ToggleMode = true
+float X = 25.0
+float Y = 128.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "LayerVisButton"
+int Index = 10
+string Graphic = "graphic19_edit.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+string ImageDown = "button19_square_toggled.png"
+bool ToggleMode = true
+float X = 3.0
+float Y = 153.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "LayerVisButton"
+int Index = 11
+string Graphic = "graphic19_edit.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+string ImageDown = "button19_square_toggled.png"
+bool ToggleMode = true
+float X = 25.0
+float Y = 153.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "LayerVisButton"
+int Index = 12
+string Graphic = "graphic19_edit.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+string ImageDown = "button19_square_toggled.png"
+bool ToggleMode = true
+float X = 3.0
+float Y = 178.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "LayerVisButton"
+int Index = 13
+string Graphic = "graphic19_edit.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+string ImageDown = "button19_square_toggled.png"
+bool ToggleMode = true
+float X = 25.0
+float Y = 178.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "LayerVisButton"
+int Index = 14
+string Graphic = "graphic19_edit.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+string ImageDown = "button19_square_toggled.png"
+bool ToggleMode = true
+float X = 3.0
+float Y = 203.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+
+// Just add more layer buttons if needed here
+          // Current Hard Coded Limit to buttons is 15.
+          // Sorry all Maxed Out
+
+}
+
+UI_WINDOWDEF Window
+{
+string Name = "BottomLeftContainer"
+float X = 0.0
+float H = 28.0
+float BottomParentOffset = 0.0
+float W = 74.0
+int Anchor = 9
+
+UI_WINDOWDEF Image
+{
+string Name = "Border"
+float Y = 0.0
+float H = 1.0
+float RightParentOffset = 0.0
+float X = 0.0
+int Anchor = 7
+
+string Image = "border_horz_01.png"
+}
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "SelfCenterButton"
+string Tooltip = "Center the map on you"
+string Graphic = "graphic19_player.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+float X = 3.0
+float BottomParentOffset = 5.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+
+UI_WINDOWDEF Button
+{
+string PropertySet = "Button19Square"
+string Name = "NextGroupMemberButton"
+string Tooltip = "Find next group member"
+string Graphic = "graphic19_group_leave.png"
+float GraphicX = 0.0
+float GraphicY = 0.0
+float GraphicW = 19.0
+float GraphicH = 19.0
+bool Sizable = false
+float X = 25.0
+float BottomParentOffset = 5.0
+float W = 19.0
+float H = 19.0
+int Anchor = 3
+}
+}
+}
+
+// Main Area ------------------------------------------------
+UI_WINDOWDEF Window
+{
+string name = "MapContainer"
+float X = 48.0
+float Y = 26.0
+float RightParentOffset = 0.0
+float BottomParentOffset = 0.0
+int Anchor = 15
+
+UI_WINDOWDEF MapViewControl
+{
+string Name = "MapViewControl"
+float X = 6.0
+float Y = 6.0
+float RightParentOffset = 6.0
+float BottomParentOffset = 6.0
+int Anchor = 15
+bool AlphaWithParent = true
+}
+
+UI_WINDOWDEF Window
+{
+string Name = "MarkerSelectionContainer"
+string PropertySet = "WinBorder"
+float X = 6.0
+float Y = 6.0
+float W = 460.0
+float H = 350.0
+
+UI_WINDOWDEF Image
+{
+float X = 1.0
+float Y = 1.0
+float RightParentOffset = 1.0
+float BottomParentOffset = 1.0
+int Anchor = 15
+
+float ColorR = 0.0
+float ColorG = 0.0
+float ColorB = 0.0
+float Alpha = 0.7
+}
+
+UI_WINDOWDEF Window
+{
+float X = 4.0
+float Y = 4.0
+float RightParentOffset = 4.0
+float BottomParentOffset = 28.0
+int Anchor = 15
+float AlignChildrenSize = 2.0
+
+
+//// ConvDir: Map Marker Icons All
+
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_apple.png"
+string Tooltip = "Apple"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_apricot.png"
+string Tooltip = "Apricot"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_banana.png"
+string Tooltip = "Banana"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_barley.png"
+string Tooltip = "Barley"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_basil.png"
+string Tooltip = "Basil"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_bayleaf.png"
+string Tooltip = "Bay Leaf"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_bitterroot.png"
+string Tooltip = "Bitterroot"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_blackberry.png"
+string Tooltip = "Blackberry"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_blueberry.png"
+string Tooltip = "Blueberry"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_carrot.png"
+string Tooltip = "Carrot"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_chicken_2.png"
+string Tooltip = "Chicken"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_corn.png"
+string Tooltip = "Corn"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_cow_2.png"
+string Tooltip = "Cow"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_cranberry.png"
+string Tooltip = "Cranberry"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_date_golden.png"
+string Tooltip = "Date Golden"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_deer.png"
+string Tooltip = "Deer"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fennel.png"
+string Tooltip = "Fennel"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fish_1.png"
+string Tooltip = "Minnow T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fish_2.png"
+string Tooltip = "Bluegill T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fish_3.png"
+string Tooltip = "Bass T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fish_4.png"
+string Tooltip = "Trout T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fish_5.png"
+string Tooltip = "Mackerel T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fish_6.png"
+string Tooltip = "Halibut T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_garlic.png"
+string Tooltip = "Garlic"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_ginger.png"
+string Tooltip = "Ginger"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_ginseng.png"
+string Tooltip = "Ginseng"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_grape.png"
+string Tooltip = "Grape"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_grapes_white.png"
+string Tooltip = "Grape White"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_juniper.png"
+string Tooltip = "Juniper Berry"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_lemon.png"
+string Tooltip = "Lemon"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_lettuce.png"
+string Tooltip = "Lettuce"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_licorice.png"
+string Tooltip = "Licorice"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_mandrake.png"
+string Tooltip = "Mandrake"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_mint.png"
+string Tooltip = "Mint"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_nightshade.png"
+string Tooltip = "Nightshade"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_onion.png"
+string Tooltip = "Onion"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_pear.png"
+string Tooltip = "Pear"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_peas.png"
+string Tooltip = "Peas"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_pepper.png"
+string Tooltip = "Pepper"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_potato.png"
+string Tooltip = "Potato"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_pumpkin.png"
+string Tooltip = "Pumpkin"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_quinoa.png"
+string Tooltip = "Quinoa"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_raspberry.png"
+string Tooltip = "Raspberry"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_rice.png"
+string Tooltip = "Rice"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_rosemary.png"
+string Tooltip = "Rosemary"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_rye.png"
+string Tooltip = "Rye"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_sage.png"
+string Tooltip = "Sage"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_salt.png"
+string Tooltip = "Salt"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_staranise.png"
+string Tooltip = "Star Anise"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_stoneroot.png"
+string Tooltip = "Stoneroot"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_strawberry.png"
+string ToolTip = "Strawberry"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_sugar.png"
+string ToolTip = "Sugar"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_tomato.png"
+string ToolTip = "Tomato"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wheat.png"
+string ToolTip = "Wheat"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_clay_1.png"
+string Tooltip = "Adobe T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_clay_2.png"
+string Tooltip = "Earthenware T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_clay_3.png"
+string Tooltip = "Terra Cotta T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_clay_4.png"
+string Tooltip = "Stoneware T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_clay_5.png"
+string Tooltip = "Geostone T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_clay_6.png"
+string Tooltip = "Porcelain T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_crystal_1.png"
+string Tooltip = "Viridian Azulyte Crystal T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_crystal_2.png"
+string Tooltip = "Cerulean Azulyte Crystal T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_crystal_3.png"
+string Tooltip = "Amber Azulyte Crystal T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_crystal_4.png"
+string Tooltip = "Titian Azulyte Crystal T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_crystal_5.png"
+string Tooltip = "Crimson Azulyte Crystal T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_crystal_6.png"
+string Tooltip = "Violet Azulyte Crystal T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fabric.png"
+string Tooltip = "Fabric"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fabric_1.png"
+string Tooltip = "Flax T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fabric_2.png"
+string Tooltip = "Kenaf T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fabric_3.png"
+string Tooltip = "Cotton T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fabric_4.png"
+string Tooltip = "Silk T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fabric_5.png"
+string Tooltip = "Ironsilk 5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fabric_6.png"
+string Tooltip = "Steelsilk 6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fungus_1.png"
+string Tooltip = "Istrian Fungus T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fungus_2.png"
+string Tooltip = "Browngill Fungus T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fungus_3.png"
+string Tooltip = "Roughcap Fungus T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fungus_4.png"
+string Tooltip = "Stonespore Fungus T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fungus_5.png"
+string Tooltip = "Bloodcap Fungus T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fungus_6.png"
+string Tooltip = "Shadowstem Fungus T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_gem_1.png"
+string Tooltip = "Garnet/Malachite/Turquoise T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_gem_2.png"
+string Tooltip = "Amethyst/Rose Quartz/Lapis Lazuli T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_gem_3.png"
+string Tooltip = "Jasper/Citrine/Aquamarine T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_gem_4.png"
+string Tooltip = "Topaz/Opal/Jade T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_gem_5.png"
+string Tooltip = "Emerald/Fire Opal/Peridot T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_gem_6.png"
+string Tooltip = "Diamond/Ruby/Sapphire T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_gem_1B.png"
+string Tooltip = "Blighted Garnet/Malachite/Turquoise T1B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_gem_2B.png"
+string Tooltip = "Blighted Amethyst/Rose Quartz/Lapis Lazuli T2B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_gem_3B.png"
+string Tooltip = "Blighted Jasper/Citrine/Aquamarine T3B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_gem_4B.png"
+string Tooltip = "Blighted Topaz/Opal/Jade T4B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_gem_5B.png"
+string Tooltip = "Blighted Emerald/Fire Opal/Peridot T5B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_gem_6B.png"
+string Tooltip = "Blighted Diamond/Ruby/Sapphire T6B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_metal_1.png"
+string Tooltip = "Copper/Tin T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_metal_2.png"
+string Tooltip = "Iron/Silver T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_metal_3.png"
+string Tooltip = "Nickel/Gold T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_metal_4.png"
+string Tooltip = "Cobalt/Platinum T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_metal_5.png"
+string Tooltip = "Mithril T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_metal_6.png"
+string Tooltip = "Admantium T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_metal_1B.png"
+string Tooltip = "Blighted Copper/Tin T1B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_metal_2B.png"
+string Tooltip = "Blighted Iron/Silver T2B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_metal_3B.png"
+string Tooltip = "Blighted Nickel/Gold T3B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_metal_4B.png"
+string Tooltip = "Blighted Cobalt/Platinum T4B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_metal_5B.png"
+string Tooltip = "Blighted Mithril T5B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_metal_6B.png"
+string Tooltip = "Blighted Admantium T6B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_papyrus_1.png"
+string Tooltip = "Common Papyrus T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_papyrus_2.png"
+string Tooltip = "White Papyrus T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_papyrus_3.png"
+string Tooltip = "Azure Papyrus T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_papyrus_4.png"
+string Tooltip = "Rose Papyrus T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_papyrus_5.png"
+string Tooltip = "Silver Papyrus T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_papyrus_6.png"
+string Tooltip = "Papyrus T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_sand.png"
+string Tooltip = "Sandpile"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_sheep_1.png"
+string Tooltip = "Sheep"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_stone_1.png"
+string Tooltip = "Sandstone T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_stone_2.png"
+string Tooltip = "Slate T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_stone_3.png"
+string Tooltip = "Granite T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_stone_4.png"
+string Tooltip = "Obsidian T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_stone_5.png"
+string Tooltip = "Marble T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_stone_6.png"
+string Tooltip = "Travertine T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_stone_blighted_1.png"
+string Tooltip = "Blighted Sandstone T1B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_stone_blighted_2.png"
+string Tooltip = "Blighted Slate T2B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_stone_blighted_3.png"
+string Tooltip = "Blighted Granite T3B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_stone_blighted_4.png"
+string Tooltip = "Blighted Obsidian T4B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_stone_blighted_5.png"
+string Tooltip = "Blighted Marble T3B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_stone_blighted_6.png"
+string Tooltip = "Blighted Travertine T4B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_tree_1.png"
+string Tooltip = "Cedar T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_tree_2.png"
+string Tooltip = "Elm T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_tree_3.png"
+string Tooltip = "Oak T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_tree_4.png"
+string Tooltip = "Maple T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_tree_5.png"
+string Tooltip = "Yew T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_tree_6.png"
+string Tooltip = "Thornwood T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_tree_1B.png"
+string Tooltip = "Blighted Cedar T1B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_tree_2B.png"
+string Tooltip = "Blighted Elm T2B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_tree_3B.png"
+string Tooltip = "Blighted Oak T3B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_tree_4B.png"
+string Tooltip = "Blighted Maple T4B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_tree_5B.png"
+string Tooltip = "Blighted Yew T5B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_tree_6B.png"
+string Tooltip = "Blighted Thornwood T6B"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_city_commerce.png"
+string Tooltip = "Consignor/Pawnbroker/Spell Vendor"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_dragon_adventurer.png"
+string Tooltip = "Dragon Adventure Trainers"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_dragon_blue.png"
+string Tooltip = "Dragon ?"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_dragon_dkred.png"
+string Tooltip = "Dragon Quest NPCs"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_dragon_green.png"
+string Tooltip = "Dragon Gerix"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_dragon_guard.png"
+string Tooltip = "Dragon Guard"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_dragon_red.png"
+string Tooltip = "Dragon Town Marshall/Trophy Hunter"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_dragon_yellow.png"
+string Tooltip = "Dragon Crafter Trainers"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_lorekeeper_1.png"
+string Tooltip = "Formulatron"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_lorekeeper_2.png"
+string Tooltip = "Formulatron"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_npc.png"
+string Tooltip = "NPC Common"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_npc_adventurer.png"
+string Tooltip = "Adventurer Trainer"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_npc_black.png"
+string Tooltip = "NPC Aroah"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_npc_blue.png"
+string Tooltip = "NPC Gatekeeper/QuarterMaster/"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_npc_crafter.png"
+string Tooltip = "NPC Crafter Trainer"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_npc_gray.png"
+string Tooltip = "NPC Guards/Rangers/Grove Sentinels"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_npc_green.png"
+string Tooltip = "NPC Green"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_npc_red.png"
+string Tooltip = "NPC Trophy Hunter/Town Marshall/Quest Givers"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_npc_violet.png"
+string Tooltip = "NPC Quest Givers?"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_anvil.png"
+string Tooltip = "Anvil"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_castbox.png"
+string Tooltip = "Casting Box"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_cauldron.png"
+string Tooltip = "Cauldron"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_cook.png"
+string Tooltip = "Cook Table and Oven"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_distillery.png"
+string Tooltip = "Distillery"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_dragonforg.png"
+string Tooltip = "Dragon Scale Forge"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_essence.png"
+string Tooltip = "Essence Channeler"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_fabricdis.png"
+string Tooltip = "Fabric Distaff"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_gbench.png"
+string Tooltip = "Gem Cutting Bench"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_jtable.png"
+string Tooltip = "Jeweler's Table"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_loom.png"
+string Tooltip = "Loom"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_mannequin.png"
+string Tooltip = "Mannequin"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_millstone.png"
+string Tooltip = "Millstone"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_mixing.png"
+string Tooltip = "Mixing Tub"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_pottery.png"
+string Tooltip = "Pottery Wheel and Kiln"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_sdesk.png"
+string Tooltip = "Scholar's Desk"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_smelter.png"
+string Tooltip = "Smelter"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_stonecutter.png"
+string Tooltip = "Stone Cutter"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_stoneped.png"
+string Tooltip = "Stone Pedestal"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_tablesaw.png"
+string Tooltip = "Tablesaw"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_tanrack.png"
+string Tooltip = "Tanning Rack"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_tbench.png"
+string Tooltip = "Tinker's Workbench"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_utility_wbench.png"
+string Tooltip = "Woodworking Bench"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_aergor.png"
+string Tooltip = "Aergror"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_chicken_2.png"
+string Tooltip = "Chicken T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_dragon_grey.png"
+string Tooltip = "Dragon Mobs"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_aoh_blue.png"
+string Tooltip = "Abomination Of Anguish/Terror T5/6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_aoh_green.png"
+string Tooltip = "Abomination Of Agony/Grief T5/6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_aoh_grey.png"
+string Tooltip = "Abomination Of Fear/Pain T5/6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_aoh_red.png"
+string Tooltip = "Abomination Of Horror/Misery T5/6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_anchor.png"
+string Tooltip = "Blight Anchor"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_crab_yellow.png"
+string Tooltip = "Sand Crab"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_crab_red.png"
+string Tooltip = "Red Crab"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_beetle_yellow.png"
+string Tooltip = "Sand Beetle T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_beetle_darkgreen.png"
+string Tooltip = "Grass Beetle T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_beetle_blue.png"
+string Tooltip = "Frost/Ice/Snow Beetle T2/3/5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_beetle_red.png"
+string Tooltip = "Flame/Fire Beetle T5/6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_dungpile.png"
+string ToolTip = "Dung Pile T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_water.png"
+string Tooltip = "Golem Water T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_element_ale.png"
+string Tooltip = "Element Ale T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_element_champagne.png"
+string Tooltip = "Element Champagne T5/6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_element_vodka.png"
+string Tooltip = "Element Vodka T4/5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_element_wine.png"
+string Tooltip = "Element Wine T3/4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fyakki.png"
+string Tooltip = "Brittle Fyakki T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fyakki_2.png"
+string Tooltip = "Enduring Fyakki T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fyakki_3.png"
+string Tooltip = "Resistant Fyakki T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fyakki_4.png"
+string Tooltip = "Fyakki T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fyakki_5.png"
+string Tooltip = "Hardened Fyakki T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_fyakki_6.png"
+string Tooltip = "Indestructible Fyakki T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_ghost_2.png"
+string Tooltip = "Weaker/Lesser/Racial/Risen Ghost T1/2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_ghost_3.png"
+string Tooltip = "Greater/Surly Ghost T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_ghost_4.png"
+string Tooltip = "Mighty Ghost T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_ghost_5.png"
+string Tooltip = "Veteran Ghost T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_ghost_6.png"
+string Tooltip = "Elite Ghost T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_ghost_red.png"
+string Tooltip = "Named Ghost"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_garnet.png"
+string Tooltip = "Golem Garnet T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_malachite.png"
+string Tooltip = "Golem Malachite T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_turquoise.png"
+string Tooltip = "Golem Turquoise T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_amethyst.png"
+string Tooltip = "Golem Amethyst T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_rosequarts.png"
+string Tooltip = "Golem Rosequartz T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_lapislazuli.png"
+string Tooltip = "Golem Lapis Lazuli T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_aquamarine.png"
+string Tooltip = "Golem Aquamarine T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_citrine.png"
+string Tooltip = "Golem Citrine T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_jasper.png"
+string Tooltip = "Golem Jasper T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_jade.png"
+string Tooltip = "Golem Jade T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_opal.png"
+string Tooltip = "Golem Opal T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_topaz.png"
+string Tooltip = "Golem Topaz T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_emerald.png"
+string Tooltip = "Golem Emerald T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_fireopal.png"
+string Tooltip = "Golem Fire Opal T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_peridot.png"
+string Tooltip = "Golem Peridot T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_diamond.png"
+string Tooltip = "Golem Diamond T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_bronze.png"
+string Tooltip = "Golem Bronze T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_iron.png"
+string Tooltip = "Golem Iron/Silver T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_gold.png"
+string Tooltip = "Golem Gold T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_nickel.png"
+string Tooltip = "Golem Nickel T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_cobalt.png"
+string Tooltip = "Golem Cobalt T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_platima.png"
+string Tooltip = "Golem Platinum T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_mithril.png"
+string Tooltip = "Golem Mithril T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_sand.png"
+string Tooltip = "Golem Sand T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_slate.png"
+string Tooltip = "Golem Slate T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_granite.png"
+string Tooltip = "Golem Granite T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_obsidian.png"
+string Tooltip = "Golem Obsidian T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_marble.png"
+string Tooltip = "Golem Marble T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_travertine.png"
+string Tooltip = "Golem Travertine T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_ice.png"
+string Tooltip = "Golem Ice T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_lava.png"
+string Tooltip = "Golem Lava T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_wind.png"
+string Tooltip = "Golem Wind T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_golem_wood.png"
+string Tooltip = "Golem Wood T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_gruok_brown.png"
+string Tooltip = "Grulet/Gruok T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_gruok_blue.png"
+string Tooltip = "Winter Grulet/Winter Gruok T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_gruok_green.png"
+string Tooltip = "Gruok Green"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_gruok_red.png"
+string Tooltip = "Bloodsnout Gruok T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_kwellen_ice1.png"
+string Tooltip = "Glacial Kwellen T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_kwellen_red.png"
+string Tooltip = "Lava/ Magma Kwellen T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_kwellen_green.png"
+string Tooltip = "Energized Kwellen T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_kwellen_purple.png"
+string Tooltip = "Blighted Kwellen T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_leafy_oastic.png"
+string Tooltip = "Tamed Apple/Leafy/Forest Oastic T2/5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_oastic_red.png"
+string Tooltip = "Lava Oastic T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_maggot_white.png"
+string ToolTip = "White Maggot T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_maggot_green.png"
+string ToolTip = "Fleshy Maggot T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_maggot_red.png"
+string ToolTip = "Fetid Maggot/Putrid Maggot T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_mummy_pale.png"
+string ToolTip = "Weaker/Lesser Mummy T1/2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_mummy_blue.png"
+string ToolTip = "Greater Mummy T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_mummy_green.png"
+string ToolTip = "Mighty Mummy T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_mummy_red.png"
+string ToolTip = "Veteran Mummy T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_mummy_purple.png"
+string ToolTip = "Elite Mummy T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_necrofly_brown.png"
+string ToolTip = "Biting/Brown Necrofly T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_necrofly_blue.png"
+string ToolTip = "Blue Necrofly T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_necrofly_green.png"
+string ToolTip = "Green Necrofly T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_necrofly_red.png"
+string ToolTip = "Red Necrofly T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_necrofly_grey.png"
+string ToolTip = "Grey Necrofly T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_necrofly_purple.png"
+string ToolTip = "Purple Necrofly T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_ogre.png"
+string ToolTip = "Blighted/Naghuk/Nuthril/Zombie/Rock Hauler Ogre T5/6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_ogre_sand.png"
+string ToolTip = "Sand Ogre T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_ogre_blue.png"
+string ToolTip = "Frost/Ice/SnowOgre T2/3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_ogre_flame.png"
+string ToolTip = "Flame/Fire Ogre T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_ogre_red.png"
+string Tooltip = "Bhal'kuk Ogre T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_ogre_green.png"
+string ToolTip = "Than'kuk Ogre T5/6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_pygmy_sand.png"
+string ToolTip = "Sand Pygmy T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_pygmy_brown.png"
+string ToolTip = "Pygmy T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_pygmy_blue.png"
+string ToolTip = "Frost/Ice/Snow Pygmy T2/3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_pygmy_flame.png"
+string ToolTip = "Flame/Fire Pygmy T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_risen_bio.png"
+string ToolTip = "Risen Bioscholar T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_robot_1.png"
+string ToolTip = "Automaton V0.2A Robot T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_robot_2.png"
+string ToolTip = "Automaton V0.4A Robot T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_robot_3.png"
+string ToolTip = "Automaton V0.6B Robot T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_robot_4.png"
+string ToolTip = "Automaton V0.8B Robot T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_robot_5.png"
+string Tooltip = "Degraded/Twisted Automaton T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_ruxus.png"
+string Tooltip = "Arbotus/Ruxus"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_scorpion_green.png"
+string ToolTip = "Hunter Scorpion T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_scorpion_red.png"
+string ToolTip = "Scavenger Scorpion T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_skeleton_gray.png"
+string ToolTip = "Weaker/Lesser Skeleton T1/2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_skeleton_orange.png"
+string ToolTip = "Greater Skeleton T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_skeleton_blue.png"
+string ToolTip = "Mighty Skeleton T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_skeleton_red.png"
+string ToolTip = "Veteran Skeleton T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_skeleton_purple.png"
+string ToolTip = "Elite Skeleton T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_skulk.png"
+string Tooltip = "Skulks"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_spider_brown.png"
+string ToolTip = "Brown/Jungle Crawler/Forest Crawler Spider/Tarantula T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_spider.png"
+string ToolTip = "Venomous Stalker Spider/Tarantula T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_spider_blue.png"
+string ToolTip = "Brighter Spider/Tarantula T1/T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_spider_red.png"
+string ToolTip = "Redbacked Spider/Tarantula T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_spider_blue2.png"
+string ToolTip = "Shadow Spider/Tarantula T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_spider_purple.png"
+string ToolTip = "Purple Spider/Tarantula T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_strawblight_brown.png"
+string ToolTip = "Weaker Strawblight T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_strawblight_grey.png"
+string ToolTip = "Lesser Meatblight Blight T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_strawblight_blue.png"
+string ToolTip = "Weaker Water Greater T1 Frost/Ice Blight T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_strawblight_flame.png"
+string ToolTip = "Mighty Flame/Fire/Lava Blight T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_strawblight_green.png"
+string ToolTip = "Mighty Ash T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_strawblight_red.png"
+string ToolTip = "Veteran Tempest Blight T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_strawblight_purple.png"
+string ToolTip = "Elite Blighted/Crimson Scourge Blight/Soulslasher/Imp Mind Bender T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_treant.png"
+string Tooltip = "Treant"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_vexator_blue.png"
+string ToolTip = "Blue Vexator T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_vexator_red.png"
+string ToolTip = "Red Vexator T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_vexator_green.png"
+string ToolTip = "Green Vexator T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_vexator_purple.png"
+string ToolTip = "Purple Vexator T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_werewolf_brown.png"
+string Tooltip = "Werewolf T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_werewolf_blue.png"
+string Tooltip = "Winter Werewolf T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wisp_1.png"
+string Tooltip = "Dim/Flame Wisp T1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wisp_2.png"
+string Tooltip = "Pale Wisp T2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wisp_3.png"
+string Tooltip = "Glowing Wisp T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wisp_4.png"
+string Tooltip = "Bright Wisp T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wisp_5.png"
+string Tooltip = "Shining Wisp T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wisp_6.png"
+string Tooltip = "Radiant Wisp T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_enragedw.png"
+string Tooltip = "Wisp Enraged"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wolf_gray.png"
+string ToolTip = "Greymane/Mountain/Dire Wolf/T1/3/5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wolf_brown.png"
+string ToolTip = "Brown/Desert Wolf T2/4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wolf_blue.png"
+string Tooltip = "Winter/Winter Mountain/Icey Dire Wolf T2/3/5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wolf_red.png"
+string ToolTip = "Fire/Fiery Wolf T4/5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wolf_green.png"
+string ToolTip = "Blight Hound T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wraith.png"
+string Tooltip = "All Wraith"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_zombie_grey.png"
+string ToolTip = "Weaker/Lesser Zombie T1/2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_zombie_blue.png"
+string ToolTip = "Greater Zombie T3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_zombie_brown.png"
+string ToolTip = "Mighty Zombie T4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_zombie_red.png"
+string ToolTip = "Veteran Zombie T5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_zombie_purple.png"
+string ToolTip = "Elite Zombie T6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_destpad_2.png"
+string Tooltip = "Pad"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_teleport_2.png"
+string ToolTip = "Portal"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_bindstone_helian.png"
+string Tooltip = "Bindstone Helian"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_bindstone_lunus.png"
+string Tooltip = "Bindstone Lunus"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_shrine_1.png"
+string ToolTip = "Shrine"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_arrow_left.png"
+string ToolTip = "Path/Bridge"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_arrow_right.png"
+string ToolTip = "Path/Bridge"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_arrow_up.png"
+string ToolTip = "Path/Bridge"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_arrow_down.png"
+string ToolTip = "Path/Bridge"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_arrow_up_left.png"
+string ToolTip = "Path/Bridge"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_arrow_up_right.png"
+string ToolTip = "Path/Bridge"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_arrow_down_left.png"
+string ToolTip = "Path/Bridge"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_arrow_down_right.png"
+string ToolTip = "Path/Bridge"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_arrow_left_red.png"
+string ToolTip = "Path/Bridge(Mobs?)"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_arrow_right_red.png"
+string ToolTip = "Path/Bridge(Mobs?)"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_arrow_up_red.png"
+string ToolTip = "Path/Bridge(Mobs?)"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_arrow_down_red.png"
+string ToolTip = "Path/Bridge(Mobs?)"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_arrow_up_left_red.png"
+string ToolTip = "Path/Bridge(Mobs?)"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_arrow_up_right_red.png"
+string ToolTip = "Path/Bridge(Mobs?)"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_arrow_down_left_red.png"
+string ToolTip = "Path/Bridge(Mobs?)"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_arrow_down_right_red.png"
+string ToolTip = "Path/Bridge(Mobs?)"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_target_2.png"
+string ToolTip = "Temporary"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_mine.png"
+string ToolTip = "Mine/Satyr Tunnel"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_exclamation_2.png"
+string ToolTip = "Various Things"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_eye_2.png"
+string ToolTip = "Lakes/Pools/Waterfalls"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_flag_2.png"
+string ToolTip = "Flag 2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_blight.png"
+string ToolTip = "Blight"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_trees.png"
+string ToolTip = "Big/Dead Tree"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_campfire.png"
+string ToolTip = "Camp/Campfire/Tent"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_shield_black.png"
+string ToolTip = "Graves"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_gate.png"
+string Tooltip = "Gate 1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_gate_2.png"
+string Tooltip = "Gate 2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_gate_blighted_1.png"
+string ToolTip = "Gate Blighted 1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_gate_blighted_2.png"
+string ToolTip = "Gate Blighted 2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_corner_blighted_e.png"
+string ToolTip = "Corner Blighted E"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_corner_blighted_n.png"
+string ToolTip = "Corner Blighted N"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_corner_blighted_s.png"
+string ToolTip = "Corner Blighted S"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_corner_blighted_w.png"
+string ToolTip = "Corner Blighted W"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wall_blighted_1.png"
+string ToolTip = "Wall Blighted 1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wall_blighted_2.png"
+string ToolTip = "Wall Blighted 2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wall_blighted_3.png"
+string ToolTip = "Wall Blighted 3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wall_blighted_ew.png"
+string ToolTip = "Wall Blighted EW"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wall_blighted_ns.png"
+string ToolTip = "Wall Blighted NS"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wall_blighted_ew_down.png"
+string ToolTip = "Wall Blighted EW Down"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wall_blighted_ew_up.png"
+string ToolTip = "Wall Blighted EW Up"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wall_1.png"
+string ToolTip = "Wall 1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wall_2.png"
+string ToolTip = "Wall 2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wall_3.png"
+string ToolTip = "Wall 3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wall_gold_1.png"
+string ToolTip = "Wall Gold 1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wall_gold_2.png"
+string ToolTip = "Wall Gold 2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wall_gold_3.png"
+string ToolTip = "Wall Gold 3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_wall_orange_3.png"
+string ToolTip = "Wall Orange 3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_tower_1.png"
+string ToolTip = "Tower 1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_tower_2.png"
+string Tooltip = "Tower 2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_tower_blighted.png"
+string ToolTip = "Tower Blighted"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_arch_1.png"
+string ToolTip = "Arch"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_arch_blighted_1.png"
+string ToolTip = "Arch Blighted"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_building.png"
+string ToolTip = "Building"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_building_blighted.png"
+string Tooltip = "Building Blighted"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_dock.png"
+string ToolTip = "Dock/Fishing Pier"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_house_1.png"
+string ToolTip = "House 1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_house_2.png"
+string ToolTip = "House 2"
+}
+UI_WINDOWDEF Image
+{
+float W = 12.0
+float H = 12.0
+string Image = "map_marker_house_3.png"
+string ToolTip = "House 3 (Plot)"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_house_ruined.png"
+string ToolTip = "House Ruined"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_obelisk.png"
+string ToolTip = "Obelisk"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_platform_1.png"
+string ToolTip = "Platform"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_platform_blighted_1.png"
+string ToolTip = "Platform Blighted"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_pyramyd_1.png"
+string ToolTip = "Pyramid"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_pyramyd_blighted_1.png"
+string ToolTip = "Pyramid Blighted"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_ruins.png"
+string Tooltip = "Ruins"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_ruins_2.png"
+string Tooltip = "Ruins 2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_ruins_3.png"
+string Tooltip = "Ice Ruins"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_ruins_blighted_1.png"
+string ToolTip = "Ruins Blighted 1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_ruins_blighted_2.png"
+string Tooltip = "Blighted Ruins"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_temple_1.png"
+string Tooltip = "Temple"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_trap.png"
+string ToolTip = "Trap"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_tunnel.png"
+string ToolTip = "Tunnel"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_tunnel_2.png"
+string ToolTip = "Tunnel"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_tunnel_ice.png"
+string ToolTip = "Ice Tunnel"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_trees.png"
+string ToolTip = "Oasis"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_chest.png"
+string ToolTip = "Chest"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_kenny.png"
+string ToolTip = "Artifact"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_zzborg00.png"
+string ToolTip = "borg path 0"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_zzborg01.png"
+string ToolTip = "borg path 1"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_zzborg02.png"
+string ToolTip = "borg path 2"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_zzborg03.png"
+string ToolTip = "borg path 3"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_zzborg04.png"
+string ToolTip = "borg path 4"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_zzborg05.png"
+string ToolTip = "borg path 5"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_zzborg06.png"
+string ToolTip = "borg path 6"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_zzborg07.png"
+string ToolTip = "borg path 7"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_zzborg08.png"
+string ToolTip = "borg path 8"
+}
+UI_WINDOWDEF Image
+{
+float W = 16.0
+float H = 16.0
+string Image = "map_marker_zzborg09.png"
+string ToolTip = "borg path 9"
+}
+}
+
+UI_WINDOWDEF Text
+{
+string Text = "Select the marker that you want to place on the map."
+string PropertySet = "FontTahomaGold"
+int FontSize = 8
+float X = 4.0
+float BottomParentOffset = 4.0
+float RightParentOffset = 4.0
+float H = 24.0
+bool WordWrap = true
+int TextAlign = 2 // Center
+int Anchor = 7
+}
+}
+
+UI_WINDOWDEF Window
+{
+string Name = "MarkerPlacementContainer"
+string PropertySet = "WinBorder"
+float AnchorXPercent = 0.5
+float Y = 6.0
+float W = 220.0
+float H = 20.0
+bool Visible = false
+
+UI_WINDOWDEF Image
+{
+float X = 1.0
+float Y = 1.0
+float RightParentOffset = 1.0
+float BottomParentOffset = 1.0
+int Anchor = 15
+
+float ColorR = 0.0
+float ColorG = 0.0
+float ColorB = 0.0
+float Alpha = 0.7
+}
+
+UI_WINDOWDEF Text
+{
+string Text = "Click on the location for the new marker"
+string PropertySet = "FontTahomaGold"
+int FontSize = 8
+float X = 1.0
+float Y = 3.0
+float RightParentOffset = 1.0
+float H = 12.0
+int TextAlign = 2 // Center
+int Anchor = 7
+}
+}
+}
+}

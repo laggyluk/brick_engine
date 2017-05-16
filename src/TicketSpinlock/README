@@ -1,0 +1,66 @@
+﻿{*************************************************************
+*      Module: Ticket Spinlock with proportional backoff
+*      Version: 1.01
+*      Author: Amine Moulay Ramdane                
+*     Company: Cyber-NT Communications           
+*     
+*       Email: aminer@videotron.ca   
+*     Website: http://pages.videotron.com/aminer/
+*        Date: October 14, 2013
+*    Last update: December 13, , 2013
+*    
+* Copyright © 2013 Amine Moulay Ramdane.All rights reserved
+*
+*************************************************************}
+***********************************************************
+              
+Description: Ticket Spinlock with proportional backoff, it's FIFO fair and it reduces the cache-coherence traffic.
+
+
+
+- Platform:  Windows, Mac OSX(x86) and Linux(x86)
+
+Required FPC switches: -O3 -Sd -dFPC -dFreePascal
+
+-Sd for delphi mode.... 
+
+{$DEFINE CPU32} and {$DEFINE Windows32} for 32 bit systems
+
+{$DEFINE CPU64} and {$DEFINE Windows64} for 64 bit systems
+ 
+***********************************************************
+                     IMPORTANT NOTE:
+ This software is provided 'as-is', without any express or
+ implied warranty. In no event will the author be held
+ liable for any damages arising from the use of this
+ software.
+ Permission is granted to anyone to use this software for
+ any purpose, including commercial applications, and to
+ alter it and redistribute it freely, subject to the
+ following restrictions:
+ 1. The origin of this software must not be misrepresented,
+    you must not claim that you wrote the original software.
+    If you use this software in a product, an acknowledgment
+    in the product documentation would be appreciated but is
+    not required.
+ 2. Altered source versions must be plainly marked as such,
+    and must not be misrepresented as being the original
+    software.
+ 3. This notice may not be removed or altered from any
+    source distribution.
+***********************************************************
+
+
+Disclaimer:
+
+This software is provided on an "as-is" basis, with no warranties,
+express or implied.  The entire risk and liability of using it is yours.
+Any damages resulting from the use or misuse of this software will be 
+the responsibility of the user.
+
+
+Thank you.
+
+Amine Moulay Ramdane.
+
+

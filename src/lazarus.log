@@ -1,0 +1,21 @@
+	Thread ID 2368	0	 (i)  Log subsystem started in elapsed time mode.
+	Thread ID 2368	0	 (i)  Logging [debug info (D), info (i), notices (M), warnings (W), errors (Er), fatal errors (!!)]
+	Thread ID 2368	0	 (i)  Buffered mode: False
+	Thread ID 2368	0	 (M)  Service thread started
+	Thread ID 2368	94	 (i)  GLWidgetContext: Widget->LCLwin32\64
+	Thread ID 2368	110	 (i)  Temporary rendering context created
+	Thread ID 2368	110	 (M)  Getting OpenGL entry points and extension
+	Thread ID 2368	110	 (M)  
+	Thread ID 2368	110	 (i)  OpenGL rendering context information:
+	Thread ID 2368	110	 (i)  Renderer     : Intel(R) HD Graphics 3000
+	Thread ID 2368	110	 (i)  Vendor       : Intel
+	Thread ID 2368	110	 (i)  Version      : 3.1.0 - Build 9.17.10.3223
+	Thread ID 2368	110	 (i)  GLSL version : 1.40 - Intel Build 9.17.10.3223
+	Thread ID 2368	110	 (M)  
+	Thread ID 2368	110	 (M)  Getting OpenGL entry points and extension
+	Thread ID 2368	125	 (i)  Backward compatible core PBuffer context successfully created
+	Thread ID 2368	125	 (M)  Service context successfuly initialized
+	Thread ID 2368	4992	 (M)  Service thread finished
+	Thread ID 4736	4992	 (D)  Service thread destroyed
+	Thread ID 4736	4992	 (i)  Logged fatal_errors: 0, errors: 0, warnings: 0, notices: 7, info: 11, debug: 1
+	Thread ID 4736	4992	 (i)  Log session shutdown

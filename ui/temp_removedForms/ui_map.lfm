@@ -1,0 +1,40 @@
+inherited menuMap: TmenuMap
+  OnCreate = FormCreate
+  Position = poDesigned
+  inherited resizeBtn: TBitmapLabel
+    OnMouseLeave = nil
+    Visible = False
+  end
+  object BitmapLabel3: TBitmapLabel[6]
+    Left = 7
+    Height = 20
+    Top = 34
+    Width = 442
+    Anchors = [akTop, akLeft, akRight]
+    fontColor = clNone
+    txt.Strings = (
+      '________________________________________________________________________________'
+    )
+    FontSize = 14
+  end
+  object windowNameLabel: TBitmapLabel[7]
+    Left = 12
+    Height = 20
+    Top = 23
+    Width = 432
+    Anchors = [akTop, akLeft, akRight]
+    fontColor = clNone
+    txt.Strings = (
+      'Places of interest'
+    )
+    FontSize = 14
+  end
+  object planetShape: TShape[8]
+    Left = 116
+    Height = 227
+    Top = 112
+    Width = 239
+    Brush.Color = clNone
+    Shape = stEllipse
+  end
+end

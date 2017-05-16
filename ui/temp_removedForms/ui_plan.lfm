@@ -1,0 +1,49 @@
+inherited menuPlan: TmenuPlan
+  Height = 318
+  BorderStyle = bsSizeable
+  ClientHeight = 318
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  inherited BitmapLabel2: TBitmapLabel
+    Top = 298
+  end
+  inherited rightBorder: TBitmapLabel
+    Height = 670
+  end
+  inherited quitBtn: TBitmapLabel
+    OnClick = quitBtnClick
+  end
+  inherited topBar: TBitmapLabel
+    Left = 1
+    Top = -3
+    OnMouseDown = topBarMouseDown
+    OnMouseMove = topBarMouseMove
+    OnMouseUp = topBarMouseUp
+  end
+  inherited resizeBtn: TBitmapLabel
+    Top = 281
+    OnMouseDown = topBarMouseDown
+    OnMouseMove = resizeBtnMouseMove
+    OnMouseUp = topBarMouseUp
+    Visible = False
+  end
+  object BitmapLabel1: TBitmapLabel[6]
+    Left = 9
+    Height = 265
+    Top = 25
+    Width = 435
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    fontColor = clNone
+    txt.Strings = (
+      'The Grand Plan'
+      ''
+      '1. Build and secure basic camp'
+      '2. Spin up Planet''s core'
+      '3. Melt ice'
+      '4. Generate atmosphere'
+      '5. Initialize vegetation growth'
+      '6. Live long and prosperous'
+    )
+    FontSize = 14
+  end
+end

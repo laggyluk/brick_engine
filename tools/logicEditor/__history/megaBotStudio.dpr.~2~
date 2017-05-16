@@ -1,0 +1,18 @@
+program megaBotStudio;
+
+uses
+  FMX.Forms,
+  mega_launcher_form in 'mega_launcher_form.pas' {FormLauncher},
+  mega_editor_form in 'mega_editor_form.pas' {formEditor},
+  Lua in 'src\Lua.pas',
+  LuaLib in 'src\LuaLib.pas',
+  mega_lua_bindings_win in 'src\mega_lua_bindings_win.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TFormLauncher, FormLauncher);
+  Application.CreateForm(TformEditor, formEditor);
+  Application.Run;
+end.

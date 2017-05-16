@@ -1,0 +1,121 @@
+object toolbarNewMap: TtoolbarNewMap
+  Left = 403
+  Height = 105
+  Top = 346
+  Width = 355
+  BorderStyle = bsToolWindow
+  Caption = 'New Map'
+  ClientHeight = 105
+  ClientWidth = 355
+  LCLVersion = '1.6.0.4'
+  object chunkW: TEdit
+    Left = 92
+    Height = 28
+    Top = 12
+    Width = 27
+    TabOrder = 0
+    Text = '32'
+  end
+  object Label1: TLabel
+    Left = 8
+    Height = 20
+    Top = 16
+    Width = 84
+    Caption = 'Chunk Width'
+    ParentColor = False
+  end
+  object chunkH: TEdit
+    Left = 212
+    Height = 28
+    Top = 12
+    Width = 27
+    TabOrder = 1
+    Text = '256'
+  end
+  object Label2: TLabel
+    Left = 128
+    Height = 20
+    Top = 15
+    Width = 89
+    Caption = 'Chunk Height'
+    ParentColor = False
+  end
+  object mapW: TEdit
+    Left = 92
+    Height = 28
+    Top = 40
+    Width = 27
+    TabOrder = 2
+    Text = '16'
+  end
+  object Label3: TLabel
+    Left = 10
+    Height = 20
+    Top = 45
+    Width = 70
+    Caption = 'Map SizeX'
+    ParentColor = False
+  end
+  object Label4: TLabel
+    Left = 128
+    Height = 20
+    Top = 45
+    Width = 69
+    Caption = 'Map SizeY'
+    ParentColor = False
+  end
+  object mapH: TEdit
+    Left = 212
+    Height = 28
+    Top = 40
+    Width = 27
+    TabOrder = 3
+    Text = '16'
+  end
+  object newMapBtn: TButton
+    Left = 112
+    Height = 25
+    Top = 74
+    Width = 62
+    Caption = 'New Map'
+    ModalResult = 1
+    OnClick = newMapBtnClick
+    TabOrder = 4
+  end
+  object cancelBtn: TButton
+    Left = 185
+    Height = 25
+    Top = 74
+    Width = 58
+    Cancel = True
+    Caption = 'Cancel'
+    ModalResult = 2
+    TabOrder = 5
+  end
+  object empty: TCheckBox
+    Left = 12
+    Height = 24
+    Top = 78
+    Width = 66
+    Caption = 'empty'
+    TabOrder = 6
+  end
+  object Button3: TButton
+    Left = 264
+    Height = 24
+    Top = 11
+    Width = 75
+    Caption = '4x128x4'
+    OnClick = Button3Click
+    TabOrder = 7
+  end
+  object Button4: TButton
+    Left = 263
+    Height = 24
+    Top = 39
+    Width = 75
+    Caption = '1x64x1'
+    OnClick = Button4Click
+    TabOrder = 8
+  end
+end

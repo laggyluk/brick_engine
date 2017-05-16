@@ -1,0 +1,13 @@
+<Root>
+  <item name="Root" type="0" func="" params="" notes="" sub="false" x="441" y="21">
+    <item name="get resources" type="1" func="2" params="" notes="" sub="false" x="311" y="143">
+      <item name="go to mine" type="1" func="" params="" notes="" sub="true" x="189" y="288">
+        <item name="set res type" type="6" func="setResourceType" params="Rich Sandstone&#xA;Sandstone Exposure" notes="" sub="false" x="232" y="151"/>
+        <item name="set path " type="6" func="setNavPath" params="Spirit Isle&#xA;path00&#xA;up" notes="" sub="false" x="420" y="188"/>
+        <item name="follow path" type="6" func="followPath" params="" notes="" sub="false" x="593" y="154"/>
+      </item>
+      <item name="target nearest res" type="6" func="targetNearestRes" params="" notes="tries to find nearest &#xA;resource of type set&#xA;in 'set res type'" sub="false" x="330" y="301"/>
+      <item name="gather" type="6" func="gatherResources" params="" notes="" sub="false" x="459" y="295"/>
+    </item>
+  </item>
+</Root>

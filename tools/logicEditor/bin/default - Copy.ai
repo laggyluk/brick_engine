@@ -1,0 +1,21 @@
+<Root>
+  <item name="Root" type="1" func="2" params="" notes="" sub="false" skip="false" x="296.875" y="37">
+    <item name="in danger?" type="1" func="2" params="" notes="" sub="false" skip="false" x="-88" y="80">
+      <item name="under attack?" type="1" func="" params="" notes="" sub="false" skip="false" x="-78.25" y="70">
+        <item name="check" type="7" func="checkUnderAttack" params="" notes="" sub="false" skip="false" x="-100.75" y="100"/>
+        <item name="fight / run" type="1" func="2" params="" notes="" sub="false" skip="false" x="44.25" y="117">
+          <item name="what now?" type="1" func="" params="" notes="" sub="false" skip="false" x="-76" y="127">
+            <item name="i can win?" type="7" func="checkCanWin" params="" notes="" sub="false" skip="false" x="-63" y="83"/>
+            <item name="defend!" type="6" func="defend" params="" notes="" sub="false" skip="false" x="60" y="85"/>
+          </item>
+          <item name="run away" type="6" func="runAway" params="" notes="" sub="false" skip="false" x="83" y="131"/>
+        </item>
+      </item>
+      <item name="hungry?" type="1" func="" params="" notes="" sub="false" skip="false" x="151" y="80">
+        <item name="check hunger" type="7" func="checkHunger" params="" notes="" sub="false" skip="false" x="-45" y="90"/>
+        <item name="go eat" type="6" func="goEat" params="" notes="" sub="false" skip="false" x="83" y="97"/>
+      </item>
+    </item>
+    <item name="idle" type="6" func="idle" params="" notes="" sub="false" skip="false" x="211" y="84"/>
+  </item>
+</Root>

@@ -1,0 +1,8 @@
+rule;X;0F^[2[X]+3X]^+2F[3+^FX]-X;
+rule;F;FF&;
+axiom;X;
+iterations;6;
+size;20;20;20;
+angle;22;21;21;
+initialAngle;20;0;0;
+colors;btWoodLight;btWoodBrown;btFloraLight;btFlora;

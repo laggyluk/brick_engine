@@ -1,0 +1,82 @@
+object Form1: TForm1
+  Left = 427
+  Height = 240
+  Top = 258
+  Width = 320
+  Caption = 'Form1'
+  ClientHeight = 240
+  ClientWidth = 320
+  OnClose = FormClose
+  OnCreate = FormCreate
+  LCLVersion = '1.0.14.0'
+  object loginBtn: TButton
+    Left = 8
+    Height = 25
+    Top = 8
+    Width = 75
+    Caption = 'loginBtn'
+    OnClick = loginBtnClick
+    TabOrder = 0
+  end
+  object Memo1: TMemo
+    Left = 0
+    Height = 90
+    Top = 150
+    Width = 320
+    Align = alBottom
+    Lines.Strings = (
+      'Memo1'
+    )
+    TabOrder = 1
+  end
+  object host: TButton
+    Left = 130
+    Height = 25
+    Top = 10
+    Width = 75
+    Caption = 'host'
+    OnClick = hostClick
+    TabOrder = 2
+  end
+  object Edit1: TEdit
+    Left = 12
+    Height = 23
+    Top = 49
+    Width = 80
+    TabOrder = 3
+    Text = 'Edit1'
+  end
+  object joinBtn: TButton
+    Left = 229
+    Height = 25
+    Top = 10
+    Width = 75
+    Caption = 'joinBtn'
+    OnClick = joinBtnClick
+    TabOrder = 4
+  end
+  object difficultyBar: TScrollBar
+    Left = 12
+    Height = 17
+    Top = 112
+    Width = 121
+    Max = 5
+    PageSize = 0
+    TabOrder = 5
+    OnChange = difficultyBarChange
+  end
+  object difficulty: TEdit
+    Left = 13
+    Height = 23
+    Top = 82
+    Width = 80
+    ReadOnly = True
+    TabOrder = 6
+    Text = '0'
+  end
+  object pingTimer: TTimer
+    OnTimer = pingTimerTimer
+    left = 96
+    top = 8
+  end
+end

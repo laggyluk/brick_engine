@@ -1,0 +1,600 @@
+object formEditor: TformEditor
+  Left = 0
+  Top = 0
+  Caption = 'Editor'
+  ClientHeight = 529
+  ClientWidth = 740
+  Visible = True
+  FormFactor.Width = 1280
+  FormFactor.Height = 1024
+  FormFactor.Devices = [dkDesktop]
+  OnCreate = FormCreate
+  OnClose = FormClose
+  OnResize = FormResize
+  object memoLog: TMemo
+    Touch.InteractiveGestures = [igPan]
+    Align = alBottom
+    Animated = False
+    Height = 145.000000000000000000
+    Position.X = 153.000000000000000000
+    Position.Y = 384.000000000000000000
+    Width = 439.000000000000000000
+    DisableFocusEffect = False
+    KeyboardType = vktDefault
+    MaxLength = 512
+    ReadOnly = True
+  end
+  object memoryTimer: TTimer
+    Interval = 500
+    OnTimer = memoryTimerTimer
+    Left = 272
+    Top = 24
+  end
+  object leftPanel: TLayout
+    Align = alMostLeft
+    Height = 529.000000000000000000
+    Width = 153.000000000000000000
+    object memGrid: TStringGrid
+      Touch.InteractiveGestures = [igPan]
+      Align = alTop
+      Animated = False
+      Height = 313.000000000000000000
+      Position.Y = 73.000000000000000000
+      StyleLookup = 'gridstyle'
+      Width = 153.000000000000000000
+      AlternatingRowBackground = True
+      ReadOnly = True
+      RowCount = 3
+      RowHeight = 21.000000000000000000
+      ShowHeader = False
+      object StringColumn1: TStringColumn
+        Height = 309.000000000000000000
+        Width = 73.000000000000000000
+      end
+      object StringColumn2: TStringColumn
+        Height = 309.000000000000000000
+        Position.X = 73.000000000000000000
+        Width = 76.000000000000000000
+      end
+    end
+    object mouseRectLayout: TLayout
+      Align = alMostTop
+      Height = 73.000000000000000000
+      Width = 153.000000000000000000
+      object mouseInfo: TRectangle
+        StyleName = 'mouseColor'
+        Height = 65.000000000000000000
+        Position.X = 3.000000000000000000
+        Position.Y = 3.000000000000000000
+        Width = 113.000000000000000000
+        object labelX: TLabel
+          Align = alTop
+          Height = 15.000000000000000000
+          Text = 'labelX'
+          TextAlign = taCenter
+          Width = 113.000000000000000000
+        end
+        object mouseTimer: TTimer
+          Interval = 200
+          OnTimer = mouseTimerTimer
+          Left = 192
+          Top = 24
+        end
+        object findWin: TEdit
+          DisableFocusEffect = False
+          KeyboardType = vktDefault
+          Password = False
+          Position.X = 2.000000000000000000
+          Position.Y = 22.000000000000000000
+          Width = 87.000000000000000000
+          Height = 19.000000000000000000
+        end
+        object glassBg: TRectangle
+          Height = 19.000000000000000000
+          Position.X = 90.000000000000000000
+          Position.Y = 22.000000000000000000
+          Width = 19.000000000000000000
+          object findWinImg: TImage
+            Align = alClient
+            Bitmap.PNG = {
+              89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+              61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              025F49444154384F63644000C6CCCC4C3B2D1D1D2B867FFF182E5DBA746CF6EC
+              D98780E2FF21D2D801D800030303D1B8F8E495D75FBEB17BF75CF6FF4FC1FFFF
+              05DFFF665453FF7A78EDAAA5E1172E5C780D568D05300331536262C6B66D0F78
+              4D952D9D3F58F89BFF52D3D3F8FA9D4FE0C3E1D32F95AC7525ED4E1C3BB408A8
+              0EAB4B987575753DD864CC0A448CAD2F4AEB293EFBCACBF9FA3307EB4B363E9E
+              177F38795E3DBDFAD4849BF1F5F9172F5EDC81EA41014C525252764F7E893FFF
+              22297AFD2B2FC7034E2ED6F75C9CAC9F7FF2B33FFF2E2E72E72D97D853696969
+              3BA87A0CC0F4F7EF5F666E419EEF4CBC1C5FFE33B3BCF9F18FF1CACF7F8C97FF
+              32B1BC62E5E3FCCAC6CBF3FDDFBF7F20AF62054C8F1F3F3E2DC3F555E4CBD7DF
+              3F3EFFFEF7888999F1162333E3ED2FBFFE3DFE041453E2FD2372EFDEBDD350F5
+              1880E9E6CD9B5B843EDF78C179F7B1F1BBCF3F787FFEFECBFCF3CF5FE6775F7F
+              71B3DC7962A8C7F58E415050700B543D060039EDCFA54BE7F7071BC9268AB189
+              18BEF8F457E8D3EB2F6A8AAF9EBBC83E3BC0A7A62AC7EFE5E9150B34E4CCC993
+              279F42B42100D86FBF7EFD7A7B60FFDEC5AFAE1E7FCBF7F492F0CF8B7BBE1D5E
+              3D6BC58AA58B8B9F3C7EFC838585252A282828524242E2EAA143876E82759200
+              98ECECECBA6A6A6BFF9D3B7FE1576F6F6F3A549C24C0E8E8E858EBEDEDFD77FF
+              FEFD7F67CD9AD504120349E08C1E74F0E0C18343727272AF8151EACEC0C8E890
+              9090200B14DB4EB4012070FFFEFD336C6C6CD75594957D5EBD7A65E6EFEFAF47
+              920120004C13D79899994F686868F89D3973662E549874A0A8A828CEC0C0C000
+              00419DFE8C6B9FFB4D0000000049454E44AE426082}
+            Height = 19.000000000000000000
+            Width = 19.000000000000000000
+            OnClick = findWinImgClick
+          end
+        end
+        object color: TLabel
+          Height = 15.000000000000000000
+          Position.X = 10.000000000000000000
+          Position.Y = 46.000000000000000000
+          Text = 'color'
+          Width = 66.000000000000000000
+        end
+        object colorRect: TRectangle
+          Height = 17.000000000000000000
+          Position.X = 83.000000000000000000
+          Position.Y = 46.000000000000000000
+          Width = 28.000000000000000000
+        end
+      end
+    end
+    object legendLayout: TLayout
+      Align = alClient
+      Height = 143.000000000000000000
+      Position.Y = 386.000000000000000000
+      Width = 153.000000000000000000
+      object colFailed: TRectangle
+        Fill.Color = claTomato
+        Height = 17.000000000000000000
+        Position.X = 32.000000000000000000
+        Position.Y = 62.000000000000000000
+        Width = 89.000000000000000000
+        object Label9: TLabel
+          Height = 15.000000000000000000
+          Position.X = 8.000000000000000000
+          Position.Y = 1.000000000000000000
+          Text = 'nsFailed'
+          TextAlign = taCenter
+          Width = 73.000000000000000000
+        end
+      end
+      object colReady: TRectangle
+        Fill.Color = claCornsilk
+        Height = 17.000000000000000000
+        Position.X = 32.000000000000000000
+        Position.Y = 42.000000000000000000
+        Width = 89.000000000000000000
+        object Label6: TLabel
+          Height = 15.000000000000000000
+          Position.X = 8.000000000000000000
+          Position.Y = 1.000000000000000000
+          Text = 'nsReady'
+          TextAlign = taCenter
+          Width = 73.000000000000000000
+        end
+      end
+      object colRunning: TRectangle
+        Fill.Color = claPaleturquoise
+        Height = 17.000000000000000000
+        Position.X = 32.000000000000000000
+        Position.Y = 82.000000000000000000
+        Width = 89.000000000000000000
+        object Label7: TLabel
+          Height = 15.000000000000000000
+          Position.X = 8.000000000000000000
+          Position.Y = 1.000000000000000000
+          Text = 'nsRunning'
+          TextAlign = taCenter
+          Width = 73.000000000000000000
+        end
+      end
+      object colSuccess: TRectangle
+        Fill.Color = claChartreuse
+        Height = 17.000000000000000000
+        Position.X = 32.000000000000000000
+        Position.Y = 22.000000000000000000
+        Width = 89.000000000000000000
+        object Label8: TLabel
+          Height = 15.000000000000000000
+          Position.X = 8.000000000000000000
+          Position.Y = 1.000000000000000000
+          Text = 'nsSuccess'
+          TextAlign = taCenter
+          Width = 73.000000000000000000
+        end
+      end
+      object Label10: TLabel
+        Height = 15.000000000000000000
+        Position.X = 8.000000000000000000
+        Position.Y = 3.000000000000000000
+        Text = 'Legend'
+        Width = 120.000000000000000000
+      end
+      object restartBtn: TButton
+        DisableFocusEffect = False
+        Height = 25.000000000000000000
+        Position.X = 32.000000000000000000
+        Position.Y = 108.000000000000000000
+        Text = 'Reload Scripts'
+        Width = 89.000000000000000000
+        OnClick = restartBtnClick
+      end
+    end
+  end
+  object initTimer: TTimer
+    Interval = 500
+    OnTimer = initTimerTimer
+    Left = 520
+    Top = 32
+  end
+  object logicTimer: TTimer
+    Enabled = False
+    Interval = 100
+    OnTimer = logicTimerTimer
+    Left = 464
+    Top = 56
+  end
+  object rightPanel: TLayout
+    Align = alMostRight
+    Height = 529.000000000000000000
+    Position.X = 592.000000000000000000
+    Width = 148.000000000000000000
+    object properties: TLayout
+      Anchors = [akLeft, akTop, akBottom]
+      Height = 409.000000000000000000
+      Position.Y = 80.000000000000000000
+      Width = 145.000000000000000000
+      object propText: TEdit
+        DisableFocusEffect = False
+        KeyboardType = vktDefault
+        Password = False
+        Position.X = 8.000000000000000000
+        Position.Y = 18.000000000000000000
+        Width = 129.000000000000000000
+        Height = 22.000000000000000000
+        OnChange = propTextChange
+        object Label2: TLabel
+          Height = 15.000000000000000000
+          Position.X = -4.000000000000000000
+          Position.Y = -17.000000000000000000
+          Text = 'Display Text'
+          Width = 120.000000000000000000
+        end
+      end
+      object propType: TComboBox
+        DisableFocusEffect = False
+        Height = 24.000000000000000000
+        ItemIndex = 0
+        ListBoxResource = 'transparentlistboxstyle'
+        Position.X = 8.000000000000000000
+        Position.Y = 62.000000000000000000
+        Width = 108.000000000000000000
+        OnChange = propTypeChange
+        object Label3: TLabel
+          Height = 15.000000000000000000
+          Position.X = -3.000000000000000000
+          Position.Y = -19.000000000000000000
+          Text = 'Node Type'
+          Width = 120.000000000000000000
+        end
+        object ListBoxItem3: TListBoxItem
+          Height = 19.000000000000000000
+          IsSelected = True
+          Text = 'Priority'
+          Width = 92.000000000000000000
+        end
+        object listItem0: TListBoxItem
+          Height = 19.000000000000000000
+          Position.Y = 19.000000000000000000
+          Text = 'Sequence'
+          Width = 92.000000000000000000
+        end
+        object ListBoxItem4: TListBoxItem
+          Height = 19.000000000000000000
+          Position.Y = 38.000000000000000000
+          Text = 'Loop'
+          Width = 92.000000000000000000
+        end
+        object ListBoxItem5: TListBoxItem
+          Height = 19.000000000000000000
+          Position.Y = 57.000000000000000000
+          Text = 'Random'
+          Width = 92.000000000000000000
+        end
+        object listItem1: TListBoxItem
+          Height = 19.000000000000000000
+          IsSelected = True
+          Position.Y = 76.000000000000000000
+          Text = 'Concurent'
+          Width = 92.000000000000000000
+        end
+        object ListBoxItem6: TListBoxItem
+          Height = 19.000000000000000000
+          Position.Y = 95.000000000000000000
+          Text = 'Decorator'
+          Width = 92.000000000000000000
+        end
+        object ListBoxItem7: TListBoxItem
+          Height = 19.000000000000000000
+          Position.Y = 114.000000000000000000
+          Text = 'Action'
+          Width = 92.000000000000000000
+        end
+        object ListBoxItem8: TListBoxItem
+          Height = 19.000000000000000000
+          Position.Y = 133.000000000000000000
+          Text = 'Condition'
+          Width = 92.000000000000000000
+        end
+      end
+      object propProc: TEdit
+        DisableFocusEffect = False
+        KeyboardType = vktDefault
+        Password = False
+        Position.X = 3.000000000000000000
+        Position.Y = 145.000000000000000000
+        Width = 134.000000000000000000
+        Height = 22.000000000000000000
+        OnChange = propProcChange
+        object Label4: TLabel
+          Height = 15.000000000000000000
+          Position.X = 2.000000000000000000
+          Position.Y = -17.000000000000000000
+          Text = 'Node var'
+          Width = 120.000000000000000000
+        end
+      end
+      object openBtn: TButton
+        DisableFocusEffect = False
+        Enabled = False
+        Height = 19.000000000000000000
+        Position.X = 85.000000000000000000
+        Position.Y = 88.000000000000000000
+        Text = 'Edit'
+        Width = 52.000000000000000000
+        OnClick = openBtnClick
+        object level: TLabel
+          Height = 15.000000000000000000
+          Position.Y = 22.000000000000000000
+          Text = 'level 0'
+          Width = 110.000000000000000000
+        end
+      end
+      object subClickRect: TLayout
+        Height = 18.000000000000000000
+        HitTest = True
+        Position.X = 8.000000000000000000
+        Position.Y = 89.000000000000000000
+        Width = 73.000000000000000000
+        OnClick = subClickRectClick
+        object propTree: TCheckBox
+          DisableFocusEffect = False
+          Height = 20.000000000000000000
+          HitTest = False
+          Text = 'Sub Tree'
+          Width = 73.000000000000000000
+        end
+      end
+      object params: TMemo
+        Touch.InteractiveGestures = [igPan]
+        Height = 97.000000000000000000
+        Position.X = 4.000000000000000000
+        Position.Y = 192.000000000000000000
+        Width = 141.000000000000000000
+        DisableFocusEffect = False
+        KeyboardType = vktDefault
+        OnChange = paramsChange
+      end
+      object Label5: TLabel
+        Height = 18.000000000000000000
+        Position.X = 4.000000000000000000
+        Position.Y = 173.000000000000000000
+        Text = 'Params list'
+        Width = 120.000000000000000000
+      end
+      object notesMemo: TMemo
+        Touch.InteractiveGestures = [igPan]
+        Anchors = [akLeft, akTop, akBottom]
+        Height = 92.000000000000000000
+        Position.X = 5.000000000000000000
+        Position.Y = 312.000000000000000000
+        Width = 140.000000000000000000
+        DisableFocusEffect = False
+        KeyboardType = vktDefault
+        WordWrap = True
+        OnChange = notesMemoChange
+      end
+      object Label11: TLabel
+        Height = 15.000000000000000000
+        Position.X = 8.000000000000000000
+        Position.Y = 296.000000000000000000
+        Text = 'Notes'
+        Width = 120.000000000000000000
+      end
+      object skipCh: TCheckBox
+        DisableFocusEffect = False
+        Height = 19.000000000000000000
+        Position.X = 8.000000000000000000
+        Position.Y = 109.000000000000000000
+        Text = 'skip'
+        Width = 57.000000000000000000
+        OnChange = skipChChange
+      end
+    end
+    object selectorBtn: TRoundRect
+      DragMode = dmAutomatic
+      Height = 28.000000000000000000
+      Position.X = 23.000000000000000000
+      Position.Y = 8.000000000000000000
+      Width = 77.000000000000000000
+      object Label1: TLabel
+        Align = alClient
+        Height = 28.000000000000000000
+        Text = 'New Node'
+        TextAlign = taCenter
+        Width = 77.000000000000000000
+      end
+      object selectGlow: TGlowEffect
+        Softness = 0.400000005960464500
+        GlowColor = claGold
+        Opacity = 0.899999976158142100
+      end
+    end
+    object linkRect: TRectangle
+      Height = 25.000000000000000000
+      Position.X = 4.000000000000000000
+      Position.Y = 50.000000000000000000
+      Width = 64.000000000000000000
+      object linkBtn: TSpeedButton
+        Align = alClient
+        Height = 25.000000000000000000
+        StaysPressed = True
+        Text = 'Set parent'
+        Width = 64.000000000000000000
+        OnMouseUp = linkBtnMouseUp
+      end
+    end
+    object delBtn: TButton
+      DisableFocusEffect = False
+      Height = 25.000000000000000000
+      Position.X = 78.000000000000000000
+      Position.Y = 50.000000000000000000
+      Text = 'Delete'
+      Width = 41.000000000000000000
+      OnClick = delBtnClick
+    end
+    object loadBtn: TButton
+      Anchors = [akLeft, akBottom]
+      DisableFocusEffect = False
+      Height = 22.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 497.000000000000000000
+      Text = 'Load'
+      Width = 54.000000000000000000
+      OnClick = loadBtnClick
+    end
+    object saveBtn: TButton
+      Anchors = [akLeft, akBottom]
+      DisableFocusEffect = False
+      Height = 22.000000000000000000
+      Position.X = 65.000000000000000000
+      Position.Y = 497.000000000000000000
+      Text = 'Save'
+      Width = 53.000000000000000000
+      OnClick = saveBtnClick
+    end
+  end
+  object OpenDialog: TOpenDialog
+    Filter = '*.ai'
+    Left = 91
+    Top = 187
+  end
+  object SaveDialog: TSaveDialog
+    DefaultExt = 'ai'
+    Filter = '*.ai'
+    Left = 66
+    Top = 267
+  end
+  object TabControl1: TTabControl
+    Align = alClient
+    Height = 384.000000000000000000
+    Position.X = 153.000000000000000000
+    TabIndex = 1
+    Width = 439.000000000000000000
+    object logicTab: TTabItem
+      WordWrap = False
+      Height = 24.000000000000000000
+      IsSelected = False
+      Position.X = 1.000000000000000000
+      Text = 'Logic'
+      Width = 46.000000000000000000
+      object scrollBox: TFramedScrollBox
+        Touch.InteractiveGestures = [igPan]
+        Align = alClient
+        Height = 50.000000000000000000
+        UseSmallScrollBars = True
+        Width = 50.000000000000000000
+        OnDragOver = scrollBoxDragOver
+        OnDragDrop = scrollBoxDragDrop
+        OnMouseWheel = scrollBoxMouseWheel
+        object greenRect: TRectangle
+          Align = alClient
+          Fill.Color = x8800FF00
+          Height = 425.000000000000000000
+          HitTest = False
+          Visible = False
+          Width = 459.000000000000000000
+        end
+        object container: TLayout
+          Height = 401.000000000000000000
+          Width = 435.000000000000000000
+        end
+        object Selector: TRectangle
+          StyleName = 'panelstyle'
+          DragMode = dmAutomatic
+          Fill.Color = claAliceblue
+          Height = 65.000000000000000000
+          Position.X = 160.000000000000000000
+          Position.Y = 20.000000000000000000
+          Stroke.Color = claCrimson
+          Visible = False
+          Width = 121.000000000000000000
+          OnDblClick = SelectorDblClick
+          OnMouseDown = SelectorMouseDown
+          object ComboBox1: TComboBox
+            DisableFocusEffect = False
+            Height = 20.000000000000000000
+            ItemIndex = 0
+            ListBoxResource = 'transparentlistboxstyle'
+            Position.X = 19.000000000000000000
+            Position.Y = 34.000000000000000000
+            Width = 87.000000000000000000
+            object ListBoxItem1: TListBoxItem
+              Height = 19.000000000000000000
+              IsSelected = True
+              Text = 'Concurent'
+              Width = 19.000000000000000000
+            end
+            object ListBoxItem2: TListBoxItem
+              Height = 19.000000000000000000
+              Text = 'Sequence'
+              Width = 19.000000000000000000
+            end
+          end
+          object NodeText: TLabel
+            Height = 19.000000000000000000
+            Position.X = 1.000000000000000000
+            Position.Y = 7.000000000000000000
+            StyleLookup = 'NodeTextStyle1'
+            Text = 'New Node'
+            TextAlign = taCenter
+            Width = 120.000000000000000000
+          end
+          object ColorAnimation1: TColorAnimation
+            Enabled = True
+            Duration = 0.200000002980232200
+            PropertyName = 'Fill.Color'
+            StartValue = claWhite
+            StopValue = claSpringgreen
+          end
+        end
+      end
+    end
+    object configTab: TTabItem
+      WordWrap = False
+      Height = 24.000000000000000000
+      IsSelected = True
+      Position.X = 47.000000000000000000
+      Text = 'Config'
+      Width = 52.000000000000000000
+    end
+  end
+  object xml: TXMLDocument
+    Active = True
+    Options = [doNodeAutoCreate, doNodeAutoIndent, doAttrNull, doAutoPrefix, doNamespaceDecl]
+    Left = 43
+    Top = 195
+    DOMVendorDesc = 'MSXML'
+  end
+end

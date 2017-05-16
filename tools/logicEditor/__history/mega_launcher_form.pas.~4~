@@ -1,0 +1,44 @@
+unit mega_launcher_form;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Rtti, System.Classes,
+  System.Variants, FMX.Types, FMX.Controls, FMX.Forms, FMX.Dialogs,
+  FMX.Objects,FMX.Platform.Win,windows;
+
+type
+  TFormLauncher = class(TForm)
+    Label1: TLabel;
+    initTimer: TTimer;
+    Rectangle1: TRectangle;
+    procedure initTimerTimer(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormLauncher: TFormLauncher;
+
+implementation
+
+{$R *.fmx}
+
+uses mega_editor_form;
+
+procedure TFormLauncher.initTimerTimer(Sender: TObject);
+var
+  h:thandle;
+begin
+  initTimer.Enabled:=false;
+  //make the editor form to show on taskbar instead of launcher form
+{  h := FmxHandleToHWND(formEditor.Handle);
+  hide;
+  ShowWindow(h, SW_HIDE);
+  SetWindowLong(h, GWL_EXSTYLE,WS_EX_APPWINDOW);
+  ShowWindow(h, SW_SHOW);}
+end;
+
+end.

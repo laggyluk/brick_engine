@@ -1,0 +1,12 @@
+<Root>
+  <item name="Root" type="0" func="" params="" sub="false" x="387" y="32">
+    <item name="get resources" type="1" func="2" params="" sub="false" x="338" y="131">
+      <item name="set res type" type="6" func="setResourceType" params="Large Cedar&#xA;Cyder Tree" sub="false" x="12" y="267"/>
+      <item name="set path " type="6" func="setNavPath" params="Spirit Isle&#xA;00&#xA;up" sub="false" x="130" y="292"/>
+      <item name="follow path" type="6" func="followPath" params="" sub="false" x="261" y="290"/>
+      <item name="gather" type="6" func="gatherResources" params="" sub="false" x="375" y="312"/>
+      <item name="set path back" type="6" func="setNavPath" params="Spirit Isle&#xA;00&#xA;down" sub="false" x="492" y="294"/>
+      <item name="follow path" type="6" func="follow path" params="" sub="false" x="608" y="298"/>
+    </item>
+  </item>
+</Root>

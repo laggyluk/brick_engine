@@ -1,0 +1,40 @@
+object menuRotate: TmenuRotate
+  Left = 533
+  Height = 208
+  Top = 405
+  Width = 140
+  Caption = 'xyz rotation'
+  ClientHeight = 208
+  ClientWidth = 140
+  LCLVersion = '1.0.6.0'
+  object xBar: TTrackBar
+    Left = 8
+    Height = 184
+    Top = 16
+    Width = 25
+    Max = 360
+    Orientation = trVertical
+    Position = 0
+    TabOrder = 0
+  end
+  object yBar: TTrackBar
+    Left = 56
+    Height = 184
+    Top = 16
+    Width = 25
+    Max = 360
+    Orientation = trVertical
+    Position = 0
+    TabOrder = 1
+  end
+  object zBar: TTrackBar
+    Left = 104
+    Height = 184
+    Top = 16
+    Width = 25
+    Max = 360
+    Orientation = trVertical
+    Position = 0
+    TabOrder = 2
+  end
+end

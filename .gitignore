@@ -1,0 +1,22 @@
+src/sunvox_dll/
+lib/
+bin/brickUI.dbg
+bin/brickUI.exe
+slice.bmp
+*.dbg
+src/cmdline-0.5.3/cmdline/lib
+src/bgracontrols-2.2/lib
+src/bgrabitmap7.2/lib
+bin/game.exe
+bin/server.exe
+src/backup
+*/backup/
+master server/SzmasterServer.exe
+master server/test.exe
+planet/planet.exe
+planet/moon.exe
+tools/dcpcrypt-2.0.4.1/
+
+*.bak
+*.lps
+tools/logicEditor/src/__history/

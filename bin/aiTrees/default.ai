@@ -1,0 +1,51 @@
+<Root>
+  <item0 name="Root" type="1" func="2" params="" notes="" sub="false" skip="false" x="586.159362792969" y="27">
+    <item1 name="repeat" type="2" func="3" params="" notes="" sub="false" skip="false" x="7.7265625" y="87">
+      <item2 name="check if safe" type="1" func="" params="" notes="" sub="false" skip="false" x="-317.204223632813" y="-3">
+        <item3 name="enemies in sight?" type="1" func="" params="" notes="" sub="true" skip="false" x="-47" y="62">
+          <item4 name="look around" type="6" func="findEnemyInSight" params="" notes="" sub="false" skip="false" x="-152" y="59"/>
+          <item5 name="fight or run?" type="5" func="" params="" notes="" sub="false" skip="false" x="-38" y="91"/>
+          <item6 name="shoot loop" type="2" func="" params="" notes="" sub="false" skip="false" x="67" y="108">
+            <item7 name="shoot" type="6" func="shoot" params="" notes="" sub="false" skip="false" x="-70.5814819335938" y="73"/>
+            <item8 name="delay" type="6" func="wait" params="1&#xA;2" notes="" sub="false" skip="false" x="112.75" y="75"/>
+          </item6>
+        </item3>
+      </item2>
+      <item9 name="set idle anchor pt" type="6" func="saveIdlePoint" params="V1" notes="" sub="false" skip="false" x="-194.204223632813" y="54"/>
+      <item10 name="repeat" type="1" func="1" params="" notes="" sub="false" skip="false" x="-64.2042236328125" y="76">
+        <item11 name="wonder around" type="6" func="idleAroundPoint" params="12" notes="" sub="false" skip="false" x="-87" y="62"/>
+        <item12 name="wait" type="6" func="wait" params="3&#xA;5" notes="" sub="false" skip="false" x="34" y="72"/>
+      </item10>
+      <item13 name="any job around?" type="2" func="" params="" notes="" sub="false" skip="false" x="253.676208496094" y="62">
+        <item14 name="find job" type="6" func="findJob" params="" notes="" sub="false" skip="false" x="-142.880432128906" y="75"/>
+        <item15 name="jobTree" type="1" func="3" params="" notes="" sub="false" skip="false" x="24" y="90">
+          <item16 name="dig" type="1" func="1" params="V1" notes="" sub="true" skip="false" x="-126.880432128906" y="50">
+            <item17 name="proper tree for job?" type="7" func="doesTreeSolveJob" params="jtDig" notes="" sub="false" skip="false" x="-120.194458007813" y="88"/>
+            <item18 name="repeat" type="1" func="2" params="" notes="" sub="false" skip="false" x="7.359619140625" y="92">
+              <item19 name="go to blok" type="6" func="followPath" params="V1" notes="" sub="false" skip="false" x="-112.396484375" y="85"/>
+              <item20 name="dig" type="6" func="dig" params="" notes="" sub="false" skip="false" x="6.52926635742188" y="88"/>
+              <item21 name="finish" type="0" func="fail" params="" notes="" sub="false" skip="false" x="128.529266357422" y="66"/>
+            </item18>
+          </item16>
+          <item22 name="build" type="1" func="1" params="V1" notes="" sub="true" skip="false" x="3.008544921875" y="87">
+            <item23 name="proper tree for job?" type="7" func="doesTreeSolveJob" params="jtBuild" notes="" sub="false" skip="false" x="-93" y="58"/>
+            <item24 name="repeat" type="1" func="2" params="" notes="" sub="false" skip="false" x="7.359619140625" y="92">
+              <item25 name="go to blok" type="6" func="followPath" params="V1" notes="" sub="false" skip="false" x="-112.396484375" y="85"/>
+              <item26 name="build" type="6" func="build" params="" notes="" sub="false" skip="false" x="6.52926635742188" y="88"/>
+              <item27 name="finish" type="0" func="fail" params="" notes="" sub="false" skip="false" x="128.529266357422" y="66"/>
+            </item24>
+          </item22>
+          <item28 name="haul" type="1" func="1" params="V1" notes="" sub="true" skip="false" x="117.059692382813" y="46">
+            <item29 name="proper tree for job?" type="7" func="doesTreeSolveJob" params="jtPickUpItem" notes="" sub="false" skip="false" x="-126.933410644531" y="67"/>
+            <item30 name="repeat" type="1" func="2" params="" notes="" sub="false" skip="false" x="63" y="85">
+              <item31 name="go to stash" type="6" func="followPath" params="V1" notes="" sub="false" skip="false" x="-126.933410644531" y="55"/>
+              <item32 name="pickup item" type="6" func="pickUpItem" params="" notes="" sub="false" skip="false" x="-60.3805541992188" y="129"/>
+              <item33 name="move to target" type="6" func="followPath" params="V1" notes="" sub="false" skip="false" x="59.6194458007813" y="131"/>
+              <item34 name="'plant' item" type="6" func="placeItem" params="" notes="" sub="false" skip="false" x="107.619445800781" y="71"/>
+            </item30>
+          </item28>
+        </item15>
+      </item13>
+    </item1>
+  </item0>
+</Root>

@@ -1,0 +1,1110 @@
+unit mega_editor_form;
+
+interface
+
+uses
+  Winapi.Windows,Messages,System.SysUtils, System.Types, System.UITypes,
+  System.Rtti, System.Classes, lua,lualib,System.UIConsts,meta_behaviour_tree,
+  System.Variants, FMX.Types, FMX.Controls, FMX.Forms, FMX.Dialogs,
+  mega_lua_bindings_win, FMX.Layouts, FMX.Memo, FMX.Objects, fmx.platform.win,
+  FMX.Edit,generics.collections,fire_Hotkey, FMX.ListBox, FMX.Grid,
+  FMX.Effects,math, FMX.Ani, Xml.xmldom, Xml.XMLIntf, Xml.Win.msxmldom,
+  Xml.XMLDoc, FMX.TabControl, IdBaseComponent, IdComponent, IdUDPBase,
+  IdUDPClient, IdSocketHandle, IdUDPServer, idglobal, inifiles;
+
+type
+  eMemTypes = (mtInt,mtFloat,mtByte);
+  //record for tracking memory regions
+  rMemValue = record
+    offset:cardinal;
+    text:string;
+    typ: eMemTypes;
+    int:integer;
+    f:single;
+    b:byte;
+  end;
+  pMemValue = ^rMemValue;
+
+  TShitNode = class (TRoundRect)
+  public
+    text:tlabel;
+    typeText:tlabel;
+    node:TBehTreeNode;
+    linkLine:TLine;
+    parentShit:TShitNode;
+    sub:boolean;
+    colorAnim:tcoloranimation;
+    oldState:nodestates;
+    constructor create(owner:TComponent);
+    destructor destroy;
+  end;
+
+  TformEditor = class(TForm)
+    memoLog: TMemo;
+    mouseInfo: TRectangle;
+    labelX: TLabel;
+    mouseTimer: TTimer;
+    findWin: TEdit;
+    findWinImg: TImage;
+    glassBg: TRectangle;
+    color: TLabel;
+    colorRect: TRectangle;
+    saveBtn: TButton;
+    memoryTimer: TTimer;
+    memGrid: TStringGrid;
+    StringColumn1: TStringColumn;
+    StringColumn2: TStringColumn;
+    initTimer: TTimer;
+    leftPanel: TLayout;
+    mouseRectLayout: TLayout;
+    logicTimer: TTimer;
+    scrollBox: TFramedScrollBox;
+    rightPanel: TLayout;
+    ComboBox1: TComboBox;
+    ListBoxItem1: TListBoxItem;
+    ListBoxItem2: TListBoxItem;
+    selectorBtn: TRoundRect;
+    Label1: TLabel;
+    selectGlow: TGlowEffect;
+    Selector: TRectangle;
+    NodeText: TLabel;
+    linkBtn: TSpeedButton;
+    linkRect: TRectangle;
+    greenRect: TRectangle;
+    properties: TLayout;
+    propText: TEdit;
+    Label2: TLabel;
+    propType: TComboBox;
+    listItem1: TListBoxItem;
+    listItem0: TListBoxItem;
+    Label3: TLabel;
+    propProc: TEdit;
+    Label4: TLabel;
+    ListBoxItem3: TListBoxItem;
+    ListBoxItem4: TListBoxItem;
+    ListBoxItem5: TListBoxItem;
+    ListBoxItem6: TListBoxItem;
+    ListBoxItem7: TListBoxItem;
+    ListBoxItem8: TListBoxItem;
+    delBtn: TButton;
+    container: TLayout;
+    propTree: TCheckBox;
+    xml: TXMLDocument;
+    OpenDialog: TOpenDialog;
+    SaveDialog: TSaveDialog;
+    openBtn: TButton;
+    loadBtn: TButton;
+    level: TLabel;
+    ColorAnimation1: TColorAnimation;
+    subClickRect: TLayout;
+    params: TMemo;
+    Label5: TLabel;
+    colReady: TRectangle;
+    Label6: TLabel;
+    colRunning: TRectangle;
+    Label7: TLabel;
+    colSuccess: TRectangle;
+    Label8: TLabel;
+    colFailed: TRectangle;
+    Label9: TLabel;
+    Label10: TLabel;
+    legendLayout: TLayout;
+    notesMemo: TMemo;
+    Label11: TLabel;
+    restartBtn: TButton;
+    TabControl1: TTabControl;
+    logicTab: TTabItem;
+    configTab: TTabItem;
+    skipCh: TCheckBox;
+    labelR: TLabel;
+    labelG: TLabel;
+    labelB: TLabel;
+    labelA: TLabel;
+    udp: TIdUDPServer;
+    procedure runScript(const scriptName:string);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure mouseTimerTimer(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure findWinImgClick(Sender: TObject);
+
+    procedure memoryTimerTimer(Sender: TObject);
+    procedure initTimerTimer(Sender: TObject);
+    procedure logicTimerTimer(Sender: TObject);
+    procedure scrollBoxDragDrop(Sender: TObject; const Data: TDragObject;
+      const Point: TPointF);
+    procedure scrollBoxDragOver(Sender: TObject; const Data: TDragObject;
+      const Point: TPointF; var Accept: Boolean);
+    procedure scrollBoxMouseWheel(Sender: TObject; Shift: TShiftState;
+      WheelDelta: Integer; var Handled: Boolean);
+    procedure saveBtnClick(Sender: TObject);
+    procedure SelectorDblClick(Sender: TObject);
+    procedure SelectorMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure linkBtnMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure propTextChange(Sender: TObject);
+    procedure propTypeChange(Sender: TObject);
+    procedure propProcChange(Sender: TObject);
+    procedure delBtnClick(Sender: TObject);
+    procedure openBtnClick(Sender: TObject);
+    procedure loadBtnClick(Sender: TObject);
+    procedure subClickRectClick(Sender: TObject);
+    procedure paramsChange(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+    procedure notesMemoChange(Sender: TObject);
+    procedure restartBtnClick(Sender: TObject);
+    procedure skipChChange(Sender: TObject);
+    procedure IdUDPConnected(Sender: TObject);
+    procedure IdUDPDisconnected(Sender: TObject);
+    procedure udpConnect(Sender: TObject);
+    procedure udpUDPRead(AThread: TIdUDPListenerThread;
+      AData: array of Byte; ABinding: TIdSocketHandle);  protected
+    //hotkey 'callback'
+    procedure WMHotKey(var Msg: TMessage);
+    procedure errorHandler(Sender: TObject; E : Exception);
+  private
+    { Private declarations }
+    nodes:tlist<tshitnode>;
+    nodeMap:TDictionary<integer,tbehTreeNode>;
+    StartTime:cardinal;
+    selectorID:integer;//sort of selector's id counter
+    //'parent' grayed out node
+    rootNode:TShitNode;
+    function getNextSelectorID:string;
+    procedure createLinkLine(old,n:tshitnode);
+    procedure saveToXml(filename:string;n:tbehtreenode);
+    procedure loadFromXml(filename:string;n:tshitnode);
+    procedure recreateShitNodes(parentNode:tshitnode);
+    procedure fromBehTOShit(n:tbehtreenode;sh:tshitnode);
+    procedure moveSelectGlow(newParent:TFmxObject);
+    //moves all the child nodes along
+    procedure moveKids(n:tshitnode;offset:tpointf);
+  public
+    { Public declarations }
+    procedure resetLogic;
+    //lua ui checkboxs are used to toggle tree node skip.
+    procedure checkBoxChange(Sender: TObject);
+  end;
+  //otputs a string to memo. also binded as lua 'print' func
+  procedure log(const s:string);
+  //converts firemonkey handle to hwnd
+  function getWinHandle(h:TFmxHandle):hwnd;
+
+var
+  formEditor: TformEditor;
+  windowPosition:TPoint;
+  windowName:string;
+  windowHandle:hwnd;
+  //random values in this range are added to mouse clicks
+  randomRange:tpoint;
+  lua:TLuaClass;
+  //holds keyId, keys are added in lua regHotkey
+  hotKeys:TDictionary<integer,string>;
+  //trick needed to process windows messages in firemonkey
+  hotkeyGrabber:THotClass;
+  //list of tracked memory regions
+  memVals:TList<rMemValue>;
+  memStream:tmemoryStream;
+  aiRoot: TBehTreeNode;
+  //when conecting nodes line will be drawn between cursor and this
+
+implementation
+uses mega_win_functions;
+
+{$R *.fmx}
+
+function getWinHandle(h:TFmxHandle):hwnd;
+begin
+   FmxHandleToHWND(h);
+end;
+
+procedure TformEditor.initTimerTimer(Sender: TObject);
+begin
+  initTimer.Enabled:=false;
+  lua.loadUIScript('scripts/ui.lua');
+  runScript('scripts/main.lua');
+  udp.Active:=true;
+end;
+
+procedure TformEditor.linkBtnMouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+var n:tshitnode;
+begin
+  if selectGlow.Parent is tshitnode then begin
+      greenRect.Visible:=linkBtn.IsPressed;
+      n:=(selectGlow.Parent as tshitnode);
+      if n.node.parent<>nil then begin
+        n.linkLine.Free;
+        n.node.parent.removeKid(n.node);
+        n.node.parent:=nil;
+        n.parentShit:=nil;
+      end;
+  end
+  else linkBtn.IsPressed:=false;
+end;
+
+procedure TformEditor.loadBtnClick(Sender: TObject);
+begin
+  if selectGlow.Parent is tshitnode then  begin
+     opendialog.FileName:=(selectGlow.Parent as tshitnode).text.text;
+     if opendialog.Execute then
+     loadFromXml(opendialog.FileName,(selectGlow.Parent as tshitnode));
+     //loadFromXml(opendialog.FileName,rootnode)
+
+  end
+  else showmessage('select some node first');
+end;
+
+function saveNodes(b:tbehtreenode;n:ixmlnode):ixmlnode;
+var
+  k:tbehtreenode;
+  me:ixmlnode;
+  i:integer;
+begin
+  me:=n.AddChild('item'+inttostr(b.nodeID));
+  me.SetAttributeNS('name','',b.text);
+  me.SetAttributeNS('type','',integer(b.typ));
+  me.SetAttributeNS('func','',b.luaFunc);
+  me.SetAttributeNS('params','',b.luaparams);
+  me.SetAttributeNS('notes','',b.notes);
+  me.SetAttributeNS('sub','',b.group);
+  me.SetAttributeNS('skip','',b.skip);
+  me.SetAttributeNS('x','',b.screenPos.x);
+  me.SetAttributeNS('y','',b.screenPos.y);
+  for i:=0 to b.count-1 do saveNodes(b.getKid(i),me);
+end;
+
+procedure TformEditor.saveToXml(filename:string;n:tbehtreenode);
+begin
+  //clear?
+   moveSelectGlow(rootNode);
+  if xml.ChildNodes.First<>nil then xml.ChildNodes.Delete(0);
+  saveNodes(n,xml.AddChild('Root'));
+  xml.SaveToFile(filename);
+end;
+
+function loadNodes(b:tbehtreenode;n:ixmlnode):tbehtreenode;
+var
+  k:ixmlnode;
+  i:integer;
+  s:string;
+  kid:tbehtreenode;
+begin
+  s:=n.NodeName;
+  if length(s)=4 then i:=strtoint(formeditor.getnextselectorid)
+  else begin
+       i:=strtoint(copy(s,5,length(s)-4));
+       formeditor.selectorID:=i+1;
+  end;
+  b.nodeID:=i;
+  s:=n.GetAttributeNS('name','');
+  b.text:=s;
+  b.typ:=nodeTypes(n.GetAttributeNS('type',''));
+  b.luaFunc:=n.GetAttributeNS('func','');
+  b.luaparams:=n.GetAttributeNS('params','');
+  b.notes:=n.GetAttributeNS('notes','');
+  b.group:=n.GetAttributeNS('sub','');
+  b.screenPos.x:=n.GetAttributeNS('x','');
+  b.screenPos.y:=n.GetAttributeNS('y','');
+  b.skip:=n.GetAttributeNS('skip','');
+  formEditor.nodeMap.Add(b.nodeID,b);
+ //if b.parent<>nil then
+ //    b.screenPos:=b.screenPos+b.parent.screenPos;
+ //
+ // if b.parent<>nil then b.screenPos:=b.screenPos+b.parent.screenPos;
+  for i:=0 to n.ChildNodes.Count-1 do begin
+      kid:=tbehtreenode.create(ntpriority);
+      b.AddKid(kid);
+      loadNodes(kid,n.ChildNodes[i]);
+  end;
+
+//  for k in n.ChildNodes do loadNodes(b.kids.Items[b.kids.Add(tbehtreenode.create(ntpriority))],k);
+end;
+
+procedure TformEditor.loadFromXml(filename: string; n: tshitnode);
+var xn:ixmlnode;
+    s:string;
+    p:tbehtreenode;
+    sn:tshitnode;
+    off:tpointf;
+    i:integer;
+begin
+//  if xml.ChildNodes.First<>nil then xml.ChildNodes.Delete(0);
+  moveSelectGlow(rootNode);
+  xml.LoadFromFile(filename);
+  //xml root
+  xn:=xml.ChildNodes.First;
+//  s:=xn.ChildNodes.First.GetAttributeNS('name','');
+  xn:=xn.ChildNodes.First;
+  //preserve parent
+  nodeMap.Clear;
+  p:=n.node.parent;
+  n.node.destroy;
+  n.node:=tbehtreenode.create(ntPriority);
+ // if n=rootNode then off:=tpointf.create(container.Width/2,64) else off:=n.Position.Point-rootNode.Position.point;
+  loadNodes(n.node,xn);
+  n.node.parent:=p;
+  //now recreate shit nodes that suppose to be visible
+  recreateShitNodes(rootNode);
+  airoot.sortByScreenPosition;
+end;
+
+procedure TformEditor.logicTimerTimer(Sender: TObject);
+var
+  deltaT:double;
+  n:tshitnode;
+  st:nodestates;
+begin
+try
+  logicTimer.Enabled:=false;
+{  deltaT:=(GetTickCount-StartTime)/ 1000;
+  if deltaT>1 then deltaT:=0.1;
+  //update treelogic rather than lua logic..
+  if lua.logicUpdate(deltaT) then
+     aiRoot.update;
+  st:=nsready;  }
+  for n in nodes do begin
+    st:=n.node.fstate;
+    case st of
+      nsReady:n.colorAnim.stopvalue:=colReady.Fill.Color;
+      nsFailed:n.colorAnim.stopvalue:=colFailed.Fill.Color;
+      nsRunning:n.colorAnim.stopvalue:=colRunning.Fill.Color;
+      nsSuccess:n.colorAnim.stopvalue:=colSuccess.Fill.Color;
+    end;
+    if n.oldState<>st then n.colorAnim.Start;
+    n.oldState:=st;
+  end;
+  logicTimer.Enabled:=true;
+  StartTime:=GetTickCount;
+finally
+
+end;
+end;
+
+procedure TformEditor.delBtnClick(Sender: TObject);
+var n,nk:tshitnode;
+   k:tbehtreenode;
+   i:integer;
+begin
+  if selectGlow.Parent is tshitnode then begin
+     n:=selectGlow.Parent as tshitnode;
+     moveselectGlow(rootNode);
+     if n.parentShit<>nil then begin
+        n.node.parent.RemoveKid(n.node);
+        n.linkLine.Free;
+     end;
+     for i:=0 to n.node.count-1 do n.node.getKid(i).parent:=nil;
+     for nk in nodes do if nk.parentShit = n then begin
+         //nk.linkLine.Free;
+         nk.parentShit:=nil;
+     end;
+     nodes.Remove(n);
+     n.Free;
+     recreateShitNodes(rootNode);
+  end;
+end;
+
+procedure TformEditor.errorHandler(Sender: TObject; E: Exception);
+begin
+  // E.message is of type string
+  log('Exception: ' + E.message);
+  // either close the application or eat the exception
+end;
+
+procedure TformEditor.findWinImgClick(Sender: TObject);
+var x,y:integer;
+begin
+  exit;//copyrights
+  targetwin(findwin.Text,x,y);
+end;
+
+procedure TformEditor.FormCreate(Sender: TObject);
+var
+  i:integer;
+  myYear, myMonth, myDay : Word;
+  ini:tinifile;
+begin
+  DecodeDate(now, myYear, myMonth, myDay);
+ // if mymonth>3 then halt;
+  Application.OnException := errorHandler;
+  opendialog.InitialDir:=apppath+'ai\';
+  savedialog.InitialDir:=apppath+'ai\';
+  FormatSettings.decimalseparator:='.';
+  auto_go_onWait:=true;
+  hotKeys:=TDictionary<integer,string>.create;
+  hotkeyGrabber:=THotClass.Create;
+  hotkeyGrabber.proc:=WMHotKey;
+  hotkeyGrabber.init;
+  nodes:=tlist<TShitNode>.create;
+  memVals:=TList<rMemValue>.create;
+  memStream:=TMemoryStream.Create;
+  lua:=TLuaClass.Create(true);
+  lua.print:=@log;
+  luaL_openlibs(lua.LuaInstance);
+  //create tree logic
+  aiRoot:=TBehTreeNode.create(ntPriority);
+  aiRoot.screenPos:=selector.Position.Point;
+  aiRoot.text:='ratunku';
+
+  rootNode:=TShitNode.create(container);
+  rootNode.node:=aiRoot;
+  rootNode.text.Text:='Root';
+  rootNode.typeText.text:=proptype.items[integer(aiRoot.typ)];
+  rootNode.Position.Point:=tpointf.Create(container.Width*0.7-rootNode.Width/2,20);
+
+  nodeMap:=tDictionary<integer,TBehTreeNode>.create;
+  loadFromXml(appPath+'default.ai',rootnode);
+  //remote connection
+  ini:=tinifile.create(appPath+'config.ini');
+  udp.DefaultPort:=ini.Readinteger('options','port',4465);
+  ini.Free;
+  udp.Active:=true;
+  log('listening on port: '+inttostr(udp.DefaultPort));
+end;
+
+procedure TformEditor.FormResize(Sender: TObject);
+begin
+  memolog.GoToTextEnd;
+  moveSelectGlow(rootNode);
+//  container.Width:=
+  rootNode.node.screenPos.x:=container.Width/2 - rootNode.Width/2;
+  rootNode.Position.x :=container.Width/2 - rootNode.Width/2;
+  recreateShitNodes(rootNode);
+  //scrollbox.HScrollBar.value:=scrollbox.width /2;
+ end;
+
+function TformEditor.getNextSelectorID: string;
+begin
+  inc(selectorID);
+  result:=inttostr(selectorID);
+end;
+
+procedure TformEditor.IdUDPConnected(Sender: TObject);
+begin
+  log('connected to server')
+end;
+
+procedure TformEditor.IdUDPDisconnected(Sender: TObject);
+begin
+//  log('disconnected from server')
+end;
+
+procedure TformEditor.FormClose(Sender: TObject; var Action: TCloseAction);
+var
+  i:integer;
+  p:TPair<integer,string>;
+begin
+  savetoxml(apppath+'default.ai',airoot);
+  nodeMap.Free;
+  lua.saveUIScript(apppath+'scripts/ui.lua');
+  lua.Free;
+  nodes.Free;
+  memStream.Free;
+  //UnRegisterHotKey(hotkeyGrabber.fMsgHandlerHWND, 545);
+  hotkeyGrabber.Free;
+//  for i:=0 to memVals.Count-1 do freeMem(memVals[i]);
+  memVals.Free;
+  //unregister hotkeys
+  for p in hotkeys do begin
+    UnRegisterHotKey(hotkeyGrabber.fMsgHandlerHWND, p.Key);
+    GlobalDeleteAtom(p.Key);
+  end;
+  hotKeys.Free;
+  aiRoot.destroy;
+end;
+
+procedure TformEditor.memoryTimerTimer(Sender: TObject);
+var
+  i:integer;
+  size:integer;
+  buf:array [0..255] of byte;
+  inte:integer;
+  by:byte;
+  f:single;
+  gowno:rMemValue;
+begin
+  //read memory
+  try
+  for i:=0 to memVals.Count-1 do begin
+      //zeroMemory(@buf,length(buf));
+      memStream.clear;
+      //reas some data to buffer stream
+      case memVals[i].typ of
+          mtInt:begin
+             size:=sizeof(integer);
+             memRead(memVals[i].offset,size,memStream);
+             memStream.Seek(0,soFromBeginning);
+             memStream.ReadBuffer(inte ,size);
+             gowno:=memVals[i];
+             gowno.int:=inte;
+             memVals[i]:=gowno;
+             memGrid.Cells[1,i]:=inttostr(memVals[i].int);
+          end;
+          mtfloat:begin
+             size:=sizeof(f);
+             memRead(memVals[i].offset,size,memStream);
+             memStream.Seek(0,soFromBeginning);
+             memStream.ReadBuffer(f ,size);
+            // w:=swap(pword(@w)^);
+             gowno:=memVals[i];
+             gowno.f:=f;
+             memVals[i]:=gowno;
+             memGrid.Cells[1,i]:=floattostr(memVals[i].f);
+          end;
+          mtByte:begin
+             size:=sizeof(byte);
+             memRead(memVals[i].offset,size,memStream);
+             memStream.Seek(0,soFromBeginning);
+             memStream.ReadBuffer(by,size);
+             gowno:=memVals[i];
+             gowno.b:=by;
+             memVals[i]:=gowno;
+             memGrid.Cells[1,i]:=inttostr(memVals[i].b);
+          end;
+      end;
+  end;
+  //update grid display
+  if memGrid.RowCount <> memVals.Count then begin
+     memGrid.RowCount:= memVals.Count;
+     for i:=0 to memVals.Count-1 do
+         memGrid.Cells[0,i]:=memVals[i].text;
+  end;
+  finally
+
+  end;
+
+end;
+
+procedure TformEditor.mouseTimerTimer(Sender: TObject);
+var
+  p:TPoint;
+  c:tcolor;
+begin
+  GetCursorPos(p);
+  labelx.Text:=format('x: %d  y: %d',[p.x-windowposition.x,p.y-windowposition.y]);
+  c:=getcolorUnderMouse;
+  color.Text:=inttostr(c);
+  colorRect.fill.Color:=c+$ff000000;
+  labelR.Text:='R: '+inttostr(getrvalue(c));
+  labelG.Text:='G: '+inttostr(getgvalue(c));
+  labelB.Text:='B: '+inttostr(getbvalue(c));
+end;
+
+procedure TformEditor.moveKids(n:tshitnode;offset: tpointf);
+var m:tshitnode;
+    i:integer;
+begin
+  for m in nodes do if m.parentShit=n then begin
+      m.Position.point:=m.Position.Point+offset;
+      moveKids(m,offset);
+  end;
+  //n.node.screenPos:=n.node.screenPos+offset;
+end;
+
+procedure TformEditor.moveSelectGlow(newParent: TFmxObject);
+begin
+    selectGlow.Enabled:=false;
+    selectGlow.Parent:=newParent;
+    selectGlow.Enabled:=true;
+end;
+
+procedure TformEditor.notesMemoChange(Sender: TObject);
+var n:tshitnode;
+begin
+  if selectGlow.Parent is tshitnode then begin
+     n:= selectGlow.Parent as tshitnode;
+     n.node.notes:=notesMemo.Text;
+  end;
+end;
+
+procedure TformEditor.openBtnClick(Sender: TObject);
+var
+  n:tshitnode;
+  i:integer;
+begin
+  n:=selectGlow.parent as tshitnode;
+  i:=strtoint(copy(level.Text,7,length(level.text)));
+  if rootNode=n then begin
+     //retract level up
+     while (n.node.parent<>nil) do begin
+      n.node:=n.node.parent;
+      if n.node.group=true then break;
+     end;
+     dec(i,2);
+     if i=-1 then begin
+       openbtn.Enabled:=false;
+       propTree.IsChecked:=false;
+     end;
+  end;
+    inc(i);
+    level.Text:='level '+inttostr(i);
+    rootNode.node:=n.node;
+    rootNode.text.Text:=n.node.text;
+    rootNode.typeText.text:=proptype.items[integer(n.node.typ)];
+    moveSelectGlow(rootNode);
+    n.Repaint;
+    recreateShitNodes(rootNode);
+end;
+
+procedure TformEditor.paramsChange(Sender: TObject);
+var n:tshitnode;
+begin
+  if selectGlow.Parent is tshitnode then begin
+     n:= selectGlow.Parent as tshitnode;
+     n.node.luaParams:=params.Text;
+  end;
+end;
+
+procedure TformEditor.propProcChange(Sender: TObject);
+begin
+  if selectGlow.Parent is tshitnode then begin
+     (selectGlow.Parent as tshitnode).node.luaFunc :=(sender as tedit).Text;
+  end;
+end;
+
+procedure TformEditor.propTextChange(Sender: TObject);
+
+begin
+  if selectGlow.Parent is tshitnode then begin
+     (selectGlow.Parent as tshitnode).text.text:=(sender as tedit).Text;
+     (selectGlow.Parent as tshitnode).node.text:=(sender as tedit).Text;
+  end;
+end;
+
+procedure TformEditor.propTypeChange(Sender: TObject);
+begin
+  if selectGlow.Parent is tshitnode then begin
+     (selectGlow.Parent as tshitnode).typeText.text :=(sender as tcombobox).Items[(sender as tcombobox).ItemIndex];
+     (selectGlow.Parent as tshitnode).node.typ:=nodetypes((sender as tcombobox).ItemIndex);
+  end;
+end;
+
+procedure TformEditor.fromBehTOShit(n:tbehtreenode;sh:tshitnode);
+var
+  b,p:tbehtreenode;
+  sn:tshitnode;
+  i:integer;
+begin
+//  for b in sh.node.kids do begin
+  for i:=0 to sh.node.count-1 do begin
+    b:=sh.node.getKid(i);
+    sn:=tshitnode.create(container);
+    sn.Parent:=container;
+    nodes.Add(sn);
+    sn.parentShit:=sh;
+    //get total position offset from all the parents
+    p:=b.parent;
+    while p<>nil do begin
+      sn.Position.point:=sh.Position.point+p.screenPos;
+      p:=p.parent;
+      if p=n then break;
+    end;
+    sn.Position.point:=b.screenPos+sh.Position.point;
+    sn.text.Text:=b.text;
+    sn.typeText.text:=propType.items[integer(b.typ)];
+    sn.sub:=b.group;
+    sn.node:=b;
+    sn.Stroke.Dash:=tstrokedash.sdSolid;
+    if b.group then sn.Stroke.Dash:=tstrokedash.sdDashDotDot
+       else fromBehToShit(n,sn);
+  end;
+end;
+
+procedure TformEditor.recreateShitNodes(parentNode:tshitnode);
+var
+  n,p:tshitnode;
+  b:tbehtreenode;
+  i:integer;
+  po:tpointf;
+begin
+  //first clear everything that is not the root shit
+  for n in nodes do if n<>rootNode then begin
+    n.linkLine.Free;
+    n.free;
+  end;
+  nodes.Clear;
+  //then create children of rootNode
+  po:=tpointf.Create(0,0);
+  fromBehTOShit(rootNode.node,parentNode);
+   // set up the container to fit all the nodes
+  i:=0;
+  for n in nodes do begin
+      if n.Position.X>po.X then po.X:=n.Position.x;
+      if n.Position.y>po.y then po.y:=n.Position.y;
+  end;
+  po.X:=po.x+rootNode.Width*2;
+  po.Y:=po.Y+rootNode.Height*2;
+  container.Width:=po.X;
+  container.Height:=po.Y;
+  for n in nodes do begin
+     if n.linkLine<>nil then n.linkLine.Free;
+        createLinkLine(n,n.parentShit);
+  end;
+end;
+
+procedure TformEditor.resetLogic;
+var i:integer;
+begin
+  airoot.reset;
+  for i:=0 to nodes.Count-1 do begin
+    nodes[i].colorAnim.stopValue:=colReady.Fill.Color;
+    nodes[i].colorAnim.Start;
+  end;
+end;
+
+procedure TformEditor.runScript(const scriptName: string);
+begin
+  lua.DoFile(scriptName);
+end;
+
+procedure TformEditor.saveBtnClick(Sender: TObject);
+begin
+//  aiRoot.saveToFile(appPath+'\test.ai');
+  if selectGlow.Parent is tshitnode then  begin
+     savedialog.FileName:=(selectGlow.Parent as tshitnode).text.text;
+     if savedialog.Execute then
+       saveToXml(savedialog.FileName,(selectGlow.Parent as tshitnode).node);
+       //saveToXml(savedialog.FileName,airoot)
+
+  end
+  else showmessage('select some node first');
+end;
+
+procedure TformEditor.scrollBoxDragDrop(Sender: TObject;
+  const Data: TDragObject; const Point: TPointF);
+var s:string;
+   i:integer;
+   n,m:tshitnode;
+   offset:tpointf;
+begin
+  //if item wass dragged from outside then means it's new obj
+  if tcontrol(data.Source).Owner<>container then begin
+    n:=tshitnode.create(container);
+//    n.position.x:=point.X-n.width/2;
+//    n.position.y:=point.y-n.height/2;
+    n.name:='Selector'+getNextSelectorID;
+    n.node.nodeID:=selectorID;
+    //create the 'real' node
+    n.node:=tbehtreenode.create(ntpriority);
+    n.node.text:=n.text.Text;
+    n.position.x:=point.X+scrollBox.HScrollBar.Value -n.width/2;
+    n.position.y:=point.y+scrollBox.vScrollBar.Value -n.height/2;
+    n.node.screenPos:=n.position.Point;
+//    if n.node.parent<>nil then //no parent here yet
+//       n.node.screenPos:=n.position.point- n.parentShit.Position.Point;
+    nodes.Add(n);
+    nodeMap.Add(n.node.nodeID,n.node);
+  end else begin
+    //otherwise it's just dragging item inside
+    n:=tshitnode(data.Source);
+    offset:=n.Position.Point;
+    n.position.x:=point.X+scrollBox.HScrollBar.Value -n.width/2;
+    n.position.y:=point.y+scrollBox.vScrollBar.Value -n.height/2;
+    n.node.screenPos:=n.position.Point;
+    offset:=n.position.Point-offset;
+    if n.node.parent<>nil then
+       n.node.screenPos:=n.position.point- n.parentShit.Position.Point;
+    //move the children along
+    moveKids(n,offset);
+//    n.node.moveKidsScreeenPos(offset);
+    //recreate all link lines at new position
+    for n in nodes do begin
+      if n.linkLine<>nil then begin
+        n.linkLine.Free;
+        createLinkLine(n,n.parentShit);
+      end;
+    end;
+  end;
+  airoot.sortByScreenPosition;
+end;
+
+procedure TformEditor.scrollBoxDragOver(Sender: TObject;
+  const Data: TDragObject; const Point: TPointF; var Accept: Boolean);
+begin
+  accept:=true;
+end;
+
+procedure TformEditor.scrollBoxMouseWheel(Sender: TObject;
+  Shift: TShiftState; WheelDelta: Integer; var Handled: Boolean);
+var
+  t:tshitnode;
+  d:single;
+begin
+exit;
+  if wheelDelta>0 then d:=0.1 else d:=-0.1;
+  container.Scale.x:=container.Scale.x+d;
+  container.Scale.y:=container.Scale.y+d;
+//  for t in nodes do begin
+//      t.Scale.X:=t.Scale.X+d;
+//      t.Scale.y:=t.Scale.y+d;
+//  end;
+//  container.Width:=container.Width+container.Width*-d;
+//  container.height:=container.height+container.height*-d;
+end;
+
+procedure TformEditor.SelectorDblClick(Sender: TObject);
+var l:tlabel;
+begin
+  l:=tlabel((sender as tcontrol).FindComponent('NodeText')) ;
+  l.Text:=inputBox('enter description','',l.Text);
+end;
+
+function distance(x1,x2,y1,y2:single):single;
+begin
+	result:= sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1))
+end;
+
+function midpoint(x1,y1,x2,y2:single):tpointf;
+var point1:tpointf;
+begin
+ point1.x:=((x2-x1)/2)+x1;
+ point1.y:=((y2-y1)/2)+y1;
+ result:=point1;
+end;
+
+function fix_angle(angle:double):double;
+begin
+ while angle>= 360.0 do
+  angle := angle - 360.0;
+ while angle < 0 do
+  angle := angle + 360.0;
+ result:=angle;
+end;
+
+function get_angle_degrees(x1,y1,x2,y2:double):double;
+const
+  RADIANS=57.29577951;
+var
+ part1, part2:double;
+ angle:double;
+begin
+ if (x1=x2) and (y1=y2) then
+  begin
+   result:=0.0;
+   exit;
+  end;
+ part1:=abs(y2-y1);
+ if (part1=0) then begin part1:=0.0000001; y1:=y1+0.0000001; end;
+ part2:=abs(x2-x1);
+ if (part2=0) then begin part2:=0.0000001; x1:=x1+0.0000001; end;
+ angle:=arctan(part1/part2)*RADIANS;
+ if ((x1>x2) and (y1<y2)) then angle:=180-angle;
+ if ((x1>x2) and (y1>y2)) then angle:=angle +180;
+ if ((x1<x2) and (y1>y2)) then angle:=360-angle;
+ angle:=fix_angle(angle);
+ result:=angle;
+end;
+
+procedure TformEditor.restartBtnClick(Sender: TObject);
+begin
+  lua.Free;
+  lua:=TLuaClass.Create(true);
+  lua.print:=@log;
+  luaL_openlibs(lua.LuaInstance);
+  runScript('scripts/main.lua');
+end;
+
+procedure toggleSkip(b:tbehtreenode;match:string;toggle:boolean);
+var i:integer;
+begin
+  if b.text=match then
+     b.skip:=toggle;
+  for i:=0 to b.count-1 do begin
+    toggleSkip(b.getKid(i),match,toggle);
+//    if b.getKid(i).text=match then b.getKid(i).skip:=toggle;
+  end;
+end;
+
+procedure TformEditor.checkBoxChange(Sender: TObject);
+begin
+  //tree nodes are checked against name of checkbox. if same then  set
+  toggleSkip(aiRoot,(sender as tcheckbox).Name,(sender as tcheckbox).IsChecked);
+end;
+
+procedure TformEditor.createLinkLine(old, n: tshitnode);
+var
+  l:tline;
+begin
+    l:=tline.Create(container);
+    l.Parent:=container;
+    l.LineType:=tlinetype.ltdiagonal;
+    l.Width:=3;
+    l.Height:=distance(old.Position.X,n.Position.X,old.Position.y,n.Position.y);
+    l.SendToBack;
+    l.Position.Point:=midpoint(old.Position.X,old.Position.y,n.Position.X,n.Position.y)+tpointf.Create(n.Width/2,n.Height/2);
+    l.Position.point:=n.Position.point+tpointf.Create(n.Width/2,n.Height/2);
+    l.RotationCenter.point:=tpointf.Create(0,0);
+    l.RotationAngle:=get_angle_degrees(old.Position.X,old.Position.y,n.Position.X,n.Position.y)+90;
+    old.linkLine:=l;
+end;
+
+procedure TformEditor.SelectorMouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+var old,n:tcontrol;
+  l:tline; i:integer;
+  start,en:tpointf;
+  e:tshitnode;
+begin
+  old:=selectGlow.Parent as tcontrol;
+  moveSelectGLow(sender as tcontrol);
+  n:=sender as tcontrol;
+
+  if greenREct.Visible then if old<>n then begin
+    //node could have multiple parent's i think
+    if (old as tshitnode).parentShit<> nil then (old as tshitnode).linkLine.free;
+    //update beh tree screen position
+    //create line between them
+   // path1.Data.Data:=format('m %f,30 l %f,30',[old.Position.X,old.Position.y,n.Position.X,n.Position.y]);
+    greenREct.Visible:=false;
+    linkBtn.IsPressed:=false;
+    createLinkLine(old as tshitnode,n as tshitnode);
+    e:=old as tshitnode;
+    e.node.parent:=(n as tshitnode).node;
+    e.parentShit:=n as tshitNode;
+    (n as tshitnode).node.Addkid(e.node);
+    e.node.screenPos:=e.position.point- e.parentShit.Position.Point;
+  end;
+  //update properties on right panel
+  propText.text:=(sender as tshitnode).text.Text;
+  propType.ItemIndex:=integer((sender as tshitnode).node.typ);
+  propProc.Text:=(sender as tshitnode).node.luaFunc;
+  propTree.IsChecked:=(sender as tshitnode).node.group;
+  params.Text:=(sender as tshitnode).node.luaParams;
+  notesMemo.Text:=(sender as tshitnode).node.notes;
+  params.GoToTextBegin;
+  skipch.IsChecked:=(sender as tshitnode).node.skip;
+  openBtn.Enabled:=proptree.ischecked;
+  for i:=0 to nodes.Count-1 do nodes[i].Repaint;
+  airoot.sortByScreenPosition;
+end;
+
+procedure TformEditor.skipChChange(Sender: TObject);
+begin
+  if selectGlow.Parent is tshitnode then begin
+     (selectGlow.Parent as tshitnode).node.skip:=skipch.Ischecked ;
+  end;
+end;
+
+procedure TformEditor.subClickRectClick(Sender: TObject);
+var
+  i:integer;
+  old,n:tshitnode;
+begin
+{  if ((selectGlow.Parent as tshitnode).node.group) and ((selectGlow.Parent as tshitnode).node.count>0) then begin
+     i:= MessageDlg('This will delete child nodes. Are you sure?', TMsgDlgType.mtError, mbOKCancel, 0);
+     if i=1 then begin
+      for i:=(selectGlow.Parent as tshitnode).node.count-1 downto 0 do (selectGlow.Parent as tshitnode).node.deleteKid(i)
+     end
+     else begin
+       proptree.ischecked:=true;
+       openBtn.Enabled:=proptree.ischecked;
+       exit;
+     end;
+   end;
+   }
+
+  if selectGlow.Parent is tshitnode then begin
+     n:=selectGlow.Parent as tshitnode;
+     if n = rootNode then begin
+       showmessage(' you don''t wanna do that to root node');
+       exit;
+     end;
+     proptree.ischecked:=not proptree.ischecked;
+     n.node.group:=proptree.ischecked;
+     if  n.node.group then begin
+         n.Stroke.Dash:=tstrokedash.sdDashDot;
+         //substract parent coordinates in children nodes
+         //for i:=0 to n.node.count-1 do n.node.getKid(i).screenPos:=n.node.getKid(i).screenPos-n.Position.Point;
+     end
+     else begin
+        n.Stroke.Dash:=tstrokedash.sdSolid;     //openBtn.Enabled:=proptree.ischecked;
+        //add parent coordinates to children
+        //for i:=0 to n.node.count-1 do n.node.getKid(i).screenPos:=n.node.getKid(i).screenPos+n.Position.Point;
+     end;
+   // openBtn.Enabled:=proptree.ischecked;
+    moveSelectGlow(subClickRect);
+    recreateShitNodes(rootNode);
+  end;
+end;
+
+procedure TformEditor.udpConnect(Sender: TObject);
+begin
+ log('connected to server');
+end;
+
+procedure TformEditor.udpUDPRead(AThread: TIdUDPListenerThread;
+  AData: array of Byte; ABinding: TIdSocketHandle);
+var msg:string;
+    status,id:integer;
+begin
+  //first letter is nsStatus, next 4 bytes are nodeID
+  if length(adata)=5 then begin
+     SetString(msg, PAnsiChar(@adata[0]), length(adata));
+     status:=strtoint(msg[1]);
+     id:=strtoint(copy(msg,2,4));
+     if nodeMap.ContainsKey(id) then
+        nodeMap[id].state:=nodeStates(status);
+    // log(msg);
+  end;
+end;
+
+procedure TformEditor.WMHotKey(var Msg: TMessage);
+begin
+  if Msg.Msg = WM_HOTKEY then
+  begin
+    //call lua function
+    lua.hotkeyCall( hotkeys[Msg.WParam]);
+  end
+  else
+    Msg.Result := DefWindowProc(hotkeyGrabber.fMsgHandlerHWND, Msg.Msg, Msg.wParam, Msg.lParam);
+end;
+
+procedure log(const s: string);
+begin
+  formEditor.memoLog.Lines.Add(s);
+  formEditor.memolog.GoToTextEnd;
+end;
+
+{ TShitNode }
+
+constructor TShitNode.create(owner: TComponent);
+var i:cardinal;
+begin
+  inherited create(owner);
+  parent:=formeditor.container;
+  width:=100;
+  height:=40;
+  position.x:=152;position.Y:=144;
+  onMouseDown:=formeditor.SelectorMouseDown;
+  i:=self.Fill.Color;
+
+  text:=tlabel.Create(nil);
+  text.Parent:=self;
+  text.TextAlign:= TTextAlign.taCenter;
+  text.Position.Y:=4.5;
+  text.Position.x:=0;
+  text.Width:=self.Width;
+  text.Text:='New Node';
+
+  typeText:=tlabel.Create(nil);
+  typeText.Parent:=self;
+  typeText.TextAlign:= TTextAlign.taCenter;
+  typeText.Text:='Priority';
+  typeText.Position.X:=0;
+  typeText.Position.y:=20;
+  typeText.Width:=self.Width;
+  dragMode:=TDragMode.dmAutomatic;
+
+  coloranim:=tcoloranimation.Create(self);
+  colorAnim.Parent:=self;
+  coloranim.PropertyName:='Fill.Color';
+end;
+
+destructor TShitNode.destroy;
+begin
+  coloranim.Free;
+  text.Destroy;
+  typeText.Destroy;
+end;
+
+end.

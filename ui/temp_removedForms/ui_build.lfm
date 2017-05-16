@@ -1,0 +1,315 @@
+object menuBuild: TmenuBuild
+  Left = 326
+  Height = 378
+  Top = 232
+  Width = 359
+  BorderStyle = bsNone
+  Caption = 'menuBuild'
+  ClientHeight = 378
+  ClientWidth = 359
+  Color = 3618615
+  KeyPreview = True
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
+  OnPaint = FormPaint
+  LCLVersion = '1.0.12.0'
+  object topSepartor: TBitmapLabel
+    Left = 0
+    Height = 20
+    Top = 30
+    Width = 362
+    Anchors = [akTop, akLeft, akRight]
+    fontColor = clNone
+    txt.Strings = (
+      '________________________________________________________________________________'
+    )
+    FontSize = 14
+  end
+  object BitmapLabel2: TBitmapLabel
+    Left = 1
+    Height = 20
+    Top = 358
+    Width = 362
+    Anchors = [akLeft, akRight, akBottom]
+    fontColor = clNone
+    txt.Strings = (
+      '________________________________________________________________________________'
+    )
+    FontSize = 14
+  end
+  object leftBorder: TBitmapLabel
+    Left = -1
+    Height = 745
+    Top = 9
+    Width = 9
+    fontColor = clNone
+    txt.Strings = (
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+    )
+    FontSize = 14
+  end
+  object materialsCol: TBitmapLabel
+    Left = 184
+    Height = 29
+    Top = 17
+    Width = 164
+    Anchors = [akTop, akRight]
+    fontColor = clNone
+    txt.Strings = (
+      'Material'
+    )
+    FontSize = 14
+  end
+  object BlueprintsCol: TBitmapLabel
+    Left = 8
+    Height = 29
+    Top = 17
+    Width = 163
+    fontColor = clNone
+    txt.Strings = (
+      'Blueprint'
+    )
+    FontSize = 14
+  end
+  object rightBorder: TBitmapLabel
+    Left = 352
+    Height = 739
+    Top = 11
+    Width = 9
+    Anchors = [akTop, akRight, akBottom]
+    fontColor = clNone
+    txt.Strings = (
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+    )
+    FontSize = 14
+  end
+  object quitBtn: TBitmapLabel
+    Left = 311
+    Height = 21
+    Top = -1
+    Width = 50
+    Anchors = [akTop, akRight]
+    OnClick = quitBtnClick
+    fontColor = clNone
+    txt.Strings = (
+      'Esc'
+    )
+    FontSize = 12
+  end
+  object leftBorder1: TBitmapLabel
+    Left = 174
+    Height = 723
+    Top = 18
+    Width = 6
+    Anchors = [akTop, akLeft, akBottom]
+    fontColor = clNone
+    txt.Strings = (
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+      '|'
+    )
+    FontSize = 14
+  end
+  object topBar: TBitmapLabel
+    Left = 0
+    Height = 24
+    Top = -4
+    Width = 314
+    Anchors = [akTop, akLeft, akRight]
+    OnMouseDown = FormMouseDown
+    OnMouseMove = FormMouseMove
+    OnMouseUp = FormMouseUp
+    fontColor = clNone
+    txt.Strings = (
+      '^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'
+    )
+    FontSize = 14
+  end
+  object resizeBtn: TBitmapLabel
+    Left = 331
+    Height = 33
+    Top = 343
+    Width = 27
+    Anchors = [akRight, akBottom]
+    OnMouseDown = FormMouseDown
+    OnMouseMove = resizeBtnMouseMove
+    OnMouseUp = FormMouseUp
+    fontColor = clNone
+    txt.Strings = (
+      '/'
+    )
+    FontSize = 14
+  end
+  object arrowBlu: TBitmapLabel
+    Left = 8
+    Height = 26
+    Top = 80
+    Width = 18
+    fontColor = clNone
+    txt.Strings = (
+      '>'
+    )
+    FontSize = 14
+  end
+  object arrowMat: TBitmapLabel
+    Left = 181
+    Height = 26
+    Top = 81
+    Width = 18
+    fontColor = clNone
+    txt.Strings = (
+      '>'
+    )
+    FontSize = 14
+  end
+end

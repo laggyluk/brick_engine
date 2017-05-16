@@ -1,0 +1,160 @@
+inherited menuForm: TmenuForm
+  Left = 557
+  Height = 264
+  Top = 325
+  Width = 259
+  ClientHeight = 264
+  ClientWidth = 259
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  inherited BitmapLabel2: TBitmapLabel
+    Top = 244
+    Width = 258
+  end
+  inherited rightBorder: TBitmapLabel
+    Left = 252
+    Height = 616
+  end
+  inherited quitBtn: TBitmapLabel
+    Left = 209
+    Visible = False
+  end
+  inherited topBar: TBitmapLabel
+    Width = 259
+    txt.Strings = (
+      '^^^^^^^^ Menu ^^^^^^^^'
+    )
+  end
+  inherited resizeBtn: TBitmapLabel
+    Left = 229
+    Top = 227
+    Visible = False
+  end
+  object singleBtn: TBitmapLabel[6]
+    Left = 7
+    Height = 40
+    Top = 20
+    Width = 156
+    OnClick = singleBtnClick
+    fontColor = clWhite
+    txt.Strings = (
+      'Single'
+    )
+    FontSize = 14
+    bgColor = 789516
+  end
+  object joinBtn: TBitmapLabel[7]
+    Left = 7
+    Height = 40
+    Top = 160
+    Width = 156
+    OnClick = joinBtnClick
+    fontColor = clNone
+    txt.Strings = (
+      'Join'
+    )
+    FontSize = 14
+    bgColor = 789516
+  end
+  object hostBtn: TBitmapLabel[8]
+    Left = 7
+    Height = 40
+    Top = 201
+    Width = 156
+    OnClick = hostBtnClick
+    fontColor = clNone
+    txt.Strings = (
+      'Host'
+    )
+    FontSize = 14
+    bgColor = 789516
+  end
+  object loginE: TEdit[9]
+    Left = 9
+    Height = 23
+    Top = 99
+    Width = 72
+    TabOrder = 0
+    Text = 'loginE'
+  end
+  object passE: TEdit[10]
+    Left = 87
+    Height = 23
+    Top = 99
+    Width = 72
+    TabOrder = 1
+    Text = 'passE'
+  end
+  object loginBtn: TBitmapLabel[11]
+    Left = 167
+    Height = 35
+    Top = 95
+    Width = 69
+    OnClick = loginBtnClick
+    fontColor = clNone
+    txt.Strings = (
+      'Login'
+    )
+    FontSize = 12
+    bgColor = 789516
+  end
+  object topBar1: TBitmapLabel[12]
+    Left = 7
+    Height = 23
+    Top = 53
+    Width = 246
+    Anchors = [akTop, akLeft, akRight]
+    fontColor = clNone
+    txt.Strings = (
+      '---------------------'
+    )
+    FontSize = 14
+    bgColor = 789516
+  end
+  object BitmapLabel1: TBitmapLabel[13]
+    Left = 7
+    Height = 38
+    Top = 69
+    Width = 156
+    fontColor = clNone
+    txt.Strings = (
+      'Multi'
+    )
+    FontSize = 14
+    bgColor = 789516
+  end
+  object addressE: TComboBox[14]
+    Left = 9
+    Height = 23
+    Top = 128
+    Width = 100
+    ItemHeight = 15
+    ItemIndex = 1
+    Items.Strings = (
+      'localhost'
+      '192.168.1.118'
+      '192.168.1.132'
+      'laggyluk.no-ip.biz'
+    )
+    TabOrder = 2
+    Text = '192.168.1.118'
+  end
+  object tcp: TLTCPComponent[15]
+    Port = 0
+    OnReceive = tcpReceive
+    OnError = tcpError
+    OnDisconnect = tcpDisconnect
+    OnConnect = tcpConnect
+    Timeout = 0
+    ReuseAddress = False
+    left = 200
+    top = 24
+  end
+  object sha: TDCP_sha256[16]
+    Id = 28
+    Algorithm = 'SHA256'
+    HashSize = 256
+    left = 120
+    top = 140
+  end
+end

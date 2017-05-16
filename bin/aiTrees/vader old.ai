@@ -1,0 +1,18 @@
+<Root>
+  <item0 name="Root" type="2" func="2" params="" notes="" sub="false" skip="false" x="502" y="36">
+    <item1 name="repeat" type="0" func="" params="" notes="" sub="false" skip="false" x="7.7265625" y="87">
+      <item2 name="find enemy" type="1" func="" params="" notes="" sub="false" skip="false" x="-220.7265625" y="43">
+        <item3 name="look around" type="6" func="findEnemyInSight" params="" notes="" sub="false" skip="false" x="-152" y="59"/>
+        <item4 name="shoot loop" type="1" func="" params="" notes="" sub="false" skip="false" x="-13" y="89">
+          <item5 name="shoot" type="6" func="shoot" params="" notes="" sub="false" skip="false" x="-70.5814819335938" y="73"/>
+          <item6 name="delay" type="6" func="wait" params="1&#xA;2" notes="" sub="false" skip="false" x="50" y="85"/>
+        </item4>
+      </item2>
+      <item7 name="set idle anchor pt" type="6" func="saveIdlePoint" params="V1" notes="" sub="false" skip="false" x="74.2734375" y="155"/>
+      <item8 name="repeat" type="1" func="1" params="" notes="" sub="false" skip="false" x="289.2734375" y="90">
+        <item9 name="wonder around" type="6" func="idleAroundPoint" params="12" notes="" sub="false" skip="false" x="-87" y="62"/>
+        <item10 name="wait" type="6" func="wait" params="3&#xA;5" notes="" sub="false" skip="false" x="92" y="67"/>
+      </item8>
+    </item1>
+  </item0>
+</Root>

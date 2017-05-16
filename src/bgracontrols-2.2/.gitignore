@@ -1,0 +1,8 @@
+backup/
+lib/
+*.[oa]
+*.ppu
+*.lps
+*.compiled
+*.bak*
+*.exe

@@ -1,0 +1,1 @@
+#version 330 corelayout (location = 0) in vec3 position;layout (location = 1) in vec3 normal;out	vec4 worldPos;out vec3 colour;out	vec3 normal;uniform mat4 gWorld;uniform mat4 mvp;uniform vec4 unifColor;void main(){	colour = unifColor.xyz;	normal = normal;	worldPos = gWorld * vec4(position,1.0f);	gl_Position = mvp * vec4(position,1.0f);}

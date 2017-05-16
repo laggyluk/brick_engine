@@ -1,0 +1,74 @@
+object mapProperties: TmapProperties
+  Left = 412
+  Height = 337
+  Top = 129
+  Width = 465
+  Caption = 'Map Properties'
+  ClientHeight = 337
+  ClientWidth = 465
+  LCLVersion = '1.0.8.0'
+  object description: TMemo
+    Left = 10
+    Height = 151
+    Top = 48
+    Width = 444
+    Lines.Strings = (
+      'description'
+    )
+    TabOrder = 0
+  end
+  object mapName: TEdit
+    Left = 11
+    Height = 23
+    Top = 12
+    Width = 443
+    ReadOnly = True
+    TabOrder = 1
+    Text = 'mapName'
+  end
+  object UpDown1: TUpDown
+    Left = 53
+    Height = 23
+    Top = 224
+    Width = 25
+    Associate = maxPlayers
+    Min = 0
+    Position = 4
+    TabOrder = 2
+    Wrap = False
+  end
+  object maxPlayers: TEdit
+    Left = 16
+    Height = 23
+    Top = 224
+    Width = 37
+    TabOrder = 3
+    Text = '4'
+  end
+  object Label1: TLabel
+    Left = 11
+    Height = 16
+    Top = 205
+    Width = 63
+    Caption = 'Max Players'
+    ParentColor = False
+  end
+  object Button1: TButton
+    Left = 320
+    Height = 37
+    Top = 288
+    Width = 51
+    Caption = 'OK'
+    TabOrder = 4
+  end
+  object Button2: TButton
+    Left = 379
+    Height = 25
+    Top = 300
+    Width = 75
+    Cancel = True
+    Caption = 'Cancel'
+    ModalResult = 2
+    TabOrder = 5
+  end
+end

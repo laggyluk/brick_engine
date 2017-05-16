@@ -1,0 +1,21 @@
+	Thread ID 3588	0	 (i)  Log subsystem started in elapsed time mode.
+	Thread ID 3588	0	 (i)  Logging [debug info (D), info (i), notices (M), warnings (W), errors (Er), fatal errors (!!)]
+	Thread ID 3588	0	 (i)  Buffered mode: False
+	Thread ID 3588	0	 (M)  Service thread started
+	Thread ID 3588	109	 (i)  GLWidgetContext: Widget->LCLwin32\64
+	Thread ID 3588	140	 (i)  Temporary rendering context created
+	Thread ID 3588	140	 (M)  Getting OpenGL entry points and extension
+	Thread ID 3588	140	 (M)  
+	Thread ID 3588	140	 (i)  OpenGL rendering context information:
+	Thread ID 3588	140	 (i)  Renderer     : Intel(R) HD Graphics 3000
+	Thread ID 3588	140	 (i)  Vendor       : Intel
+	Thread ID 3588	140	 (i)  Version      : 3.1.0 - Build 9.17.10.3223
+	Thread ID 3588	140	 (i)  GLSL version : 1.40 - Intel Build 9.17.10.3223
+	Thread ID 3588	140	 (M)  
+	Thread ID 3588	156	 (M)  Getting OpenGL entry points and extension
+	Thread ID 3588	156	 (i)  Backward compatible core PBuffer context successfully created
+	Thread ID 3588	156	 (M)  Service context successfuly initialized
+	Thread ID 3588	2324	 (M)  Service thread finished
+	Thread ID 3636	2324	 (D)  Service thread destroyed
+	Thread ID 3636	2324	 (i)  Logged fatal_errors: 0, errors: 0, warnings: 0, notices: 7, info: 11, debug: 1
+	Thread ID 3636	2324	 (i)  Log session shutdown

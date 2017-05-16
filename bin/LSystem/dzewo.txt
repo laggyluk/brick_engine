@@ -1,0 +1,10 @@
+rule;A;1F[+X]FB;
+rule;B;2F[-Y]FA;
+rule;X;A;
+rule;Y;B;
+axiom;++AA;
+iterations;8;
+size;20;20;20;
+angle;8;0;0;
+initialAngle;90;0;0;
+colors;btWoodBrown;btWoodLight;btFloraLight;btFlora;

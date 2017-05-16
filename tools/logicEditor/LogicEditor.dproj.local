@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899-12-30 00:00:00.000.274,=D:\@praca\megaBotStudio\src\mega_lua_bindings_win.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.260,=D:\@praca\megaBotStudio\src\vectorGeometry.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.355,=D:\@praca\megaBotStudio\src\Lua.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.794,=C:\Users\luksz\Documents\RAD Studio\Projects\ItemDetail1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.274,=D:\@praca\megaBotStudio\src\VectorLists.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.289,D:\@praca\megaBotStudio\src\uDGCtrlUtils.pas=</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.762,=D:\@praca\megaBotStudio\src\uDGCtrlUtils.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.706,D:\@praca\megaBotStudio\src\VectorLists.pas=</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.091,=C:\Users\luksz\Documents\RAD Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.164,=C:\Users\luksz\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.205,=C:\Users\luksz\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.598,D:\@praca\megaBotStudio\mega_editor_form.fmx=D:\@praca\megaBotStudio\Unit1.fmx</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.079,=C:\Users\luksz\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.039,=C:\Users\luksz\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.295,D:\@praca\megaBotStudio\src\fire_hotkey.pas=D:\@praca\megaBotStudio\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.583,=D:\@praca\megaBotStudio\src\meta_behaviour_tree.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.415,=C:\Users\luksz\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.442,D:\@praca\megaBotStudio\megaBotStudio.dproj=C:\Users\luksz\Documents\RAD Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.224,=D:\@praca\megaBotStudio\src\GLCrossPlatform.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.090,D:\@praca\megaBotStudio\src\PersistentClasses.pas=</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.800,=D:\@praca\megaBotStudio\src\PersistentClasses.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.845,=D:\@praca\megaBotStudio\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.556,=D:\@praca\megaBotStudio\src\mega_win_functions.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.382,D:\@praca\megaBotStudio\metaB.dproj=D:\@praca\megaBotStudio\megaBotStudio.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.162,D:\@praca\megaBotStudio\mega_launcher_form.pas=C:\Users\luksz\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.280,=D:\@praca\megaBotStudio\src\VectorTypes.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.189,C:\brickEngine\megaBotStudio\LogicEditor.dproj=C:\brickEngine\megaBotStudio\metaB.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.988,D:\@praca\megaBotStudio\mega_launcher_form.pas=</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.086,=C:\Users\luksz\Documents\RAD Studio\Projects\GroupedItems1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.598,D:\@praca\megaBotStudio\mega_editor_form.pas=D:\@praca\megaBotStudio\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.524,=D:\@praca\megaBotStudio\src\SendInputHelper.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.808,=D:\@praca\megaBotStudio\src\LuaLib.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.162,D:\@praca\megaBotStudio\mega_launcher_form.fmx=C:\Users\luksz\Documents\RAD Studio\Projects\Unit1.fmx</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.291,=D:\@praca\megaBotStudio\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.660,=D:\@praca\megaBotStudio\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.931,D:\@praca\megaBotStudio\src\direct_input_scan_codes.pas=D:\@praca\megaBotStudio\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.634,=D:\@praca\megaBotStudio\src\AllocateHWnd.pas</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="src"/>
+    <File Path="src\Lua.pas"/>
+    <File Path="src\LuaLib.pas"/>
+    <File Path="src\mega_lua_bindings_win.pas"/>
+    <File Path="src\mega_win_functions.pas"/>
+    <File Path="src\SendInputHelper.pas"/>
+    <File Path="src\GLCrossPlatform.pas"/>
+    <File Path="src\vectorGeometry.pas"/>
+    <File Path="src\VectorTypes.pas"/>
+    <File Path="src\direct_input_scan_codes.pas"/>
+    <File Path="src\AllocateHWnd.pas"/>
+    <File Path="src\fire_hotkey.pas"/>
+    <File Path="src\meta_behaviour_tree.pas"/>
+    <File Path="mega_editor_form.pas"/>
+    <File Path="mega_editor_form.fmx"/>
+  </ProjectSortOrder>
+</BorlandProject>

@@ -1,0 +1,10 @@
+<Root>
+  <item21 name="Root" type="1" func="1" params="V1" notes="" sub="false" skip="false" x="245.194458007813" y="37">
+    <item32 name="proper tree for job?" type="7" func="doesTreeSolveJob" params="jtDig" notes="" sub="false" skip="false" x="-120.194458007813" y="88"/>
+    <item24 name="repeat" type="1" func="2" params="" notes="" sub="false" skip="false" x="7.359619140625" y="92">
+      <item25 name="go to blok" type="6" func="followPath" params="V1" notes="" sub="false" skip="false" x="-112.396484375" y="85"/>
+      <item26 name="dig" type="6" func="dig" params="" notes="" sub="false" skip="false" x="6.52926635742188" y="88"/>
+      <item30 name="finish" type="0" func="fail" params="" notes="" sub="false" skip="false" x="128.529266357422" y="66"/>
+    </item24>
+  </item21>
+</Root>

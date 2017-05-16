@@ -1,0 +1,36 @@
+object UI: TUI
+  Left = 298
+  Height = 551
+  Top = 130
+  Width = 768
+  Caption = 'UI'
+  Color = cl3DDkShadow
+  Font.Color = 3660096
+  KeyPreview = True
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
+  OnKeyUp = FormKeyUp
+  OnMouseDown = FormMouseDown
+  OnMouseMove = FormMouseMove
+  OnMouseUp = FormMouseUp
+  OnMouseWheel = FormMouseWheel
+  OnResize = FormResize
+  ShowInTaskBar = stAlways
+  LCLVersion = '1.6.0.4'
+  Visible = True
+  object initTimer: TTimer
+    Enabled = False
+    OnTimer = initTimerTimer
+    left = 272
+    top = 8
+  end
+  object updateTimer: TTimer
+    Interval = 16
+    OnTimer = updateTimerTimer
+    left = 384
+    top = 8
+  end
+end

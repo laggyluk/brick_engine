@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<register>
+  <usuario id="001">
+    <nome>Fernando</nome>
+    <idade>32</idade>
+  </usuario>
+</register>

@@ -1,0 +1,27 @@
+<Root>
+  <item1 name="Root" type="1" func="2" params="" notes="" sub="false" skip="false" x="448.899291992188" y="27">
+    <item17 name="repeat" type="2" func="3" params="" notes="" sub="false" skip="false" x="7.7265625" y="87">
+      <item41 name="check if safe" type="1" func="" params="" notes="" sub="false" skip="false" x="-166.8515625" y="46">
+        <item43 name="enemies in sight?" type="1" func="" params="" notes="" sub="true" skip="false" x="-47" y="62">
+          <item44 name="look around" type="6" func="findEnemyInSight" params="" notes="" sub="false" skip="false" x="-152" y="59"/>
+          <item45 name="fight or run?" type="5" func="" params="" notes="" sub="false" skip="false" x="-38" y="91"/>
+          <item36 name="shoot loop" type="2" func="" params="" notes="" sub="false" skip="false" x="67" y="108">
+            <item34 name="shoot" type="6" func="shoot" params="" notes="" sub="false" skip="false" x="-70.5814819335938" y="73"/>
+            <item37 name="delay" type="6" func="wait" params="1&#xA;2" notes="" sub="false" skip="false" x="112.75" y="75"/>
+          </item36>
+        </item43>
+      </item41>
+      <item18 name="set idle anchor pt" type="6" func="saveIdlePoint" params="V1" notes="" sub="false" skip="false" x="-22.3840026855469" y="153"/>
+      <item14 name="repeat" type="1" func="1" params="" notes="" sub="false" skip="false" x="275.2734375" y="47">
+        <item2 name="any job around?" type="2" func="" params="" notes="" sub="false" skip="false" x="-178.899291992188" y="118">
+          <item13 name="find and load  job" type="6" func="findJob" params="" notes="" sub="false" skip="false" x="-91" y="83"/>
+          <item19 name="jobTree" type="0" func="" params="" notes="" sub="false" skip="false" x="24" y="90">
+            <item21 name="place holder" type="5" func="" params="" notes="" sub="false" skip="false" x="-7.0283203125" y="60"/>
+          </item19>
+        </item2>
+        <item15 name="wonder around" type="6" func="idleAroundPoint" params="12" notes="" sub="false" skip="false" x="-49" y="116"/>
+        <item16 name="wait" type="6" func="wait" params="3&#xA;5" notes="" sub="false" skip="false" x="95" y="116"/>
+      </item14>
+    </item17>
+  </item1>
+</Root>

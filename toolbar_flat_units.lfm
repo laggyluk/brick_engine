@@ -1,0 +1,23 @@
+object toolbarFlats: TtoolbarFlats
+  Left = 1108
+  Height = 251
+  Top = 127
+  Width = 148
+  BorderStyle = bsSizeToolWin
+  Caption = 'Actors Toolbar'
+  ClientHeight = 251
+  ClientWidth = 148
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  LCLVersion = '1.6.0.4'
+  object tree: TTreeView
+    Left = 0
+    Height = 248
+    Top = 3
+    Width = 148
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    DefaultItemHeight = 22
+    TabOrder = 0
+    OnMouseUp = treeMouseUp
+  end
+end

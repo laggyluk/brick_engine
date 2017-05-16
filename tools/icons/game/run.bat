@@ -1,0 +1,1 @@
+lazres ..\..\source\icons.lrs cursorDig.CUR

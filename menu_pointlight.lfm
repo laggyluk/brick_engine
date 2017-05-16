@@ -1,0 +1,144 @@
+object menuPointLight: TmenuPointLight
+  Left = 430
+  Height = 178
+  Top = 343
+  Width = 346
+  BorderStyle = bsNone
+  Caption = 'menuPointLight'
+  ClientHeight = 178
+  ClientWidth = 346
+  Color = clWhite
+  FormStyle = fsStayOnTop
+  KeyPreview = True
+  OnActivate = FormActivate
+  OnKeyUp = FormKeyUp
+  OnMouseUp = FormMouseUp
+  LCLVersion = '1.0.4.0'
+  object GroupBox1: TGroupBox
+    Left = 3
+    Height = 185
+    Top = -1
+    Width = 341
+    Caption = 'Point Light'
+    ClientHeight = 167
+    ClientWidth = 337
+    TabOrder = 0
+    OnMouseUp = FormMouseUp
+    object diffuse: TTrackBar
+      Left = 7
+      Height = 23
+      Top = 18
+      Width = 328
+      Max = 3000
+      OnChange = diffuseChange
+      Position = 0
+      OnMouseUp = FormMouseUp
+      TabOrder = 0
+    end
+    object attenLinear: TTrackBar
+      Left = 7
+      Height = 23
+      Top = 98
+      Width = 328
+      Max = 500
+      OnChange = diffuseChange
+      Position = 0
+      OnMouseUp = FormMouseUp
+      TabOrder = 1
+    end
+    object Label1: TLabel
+      Left = 7
+      Height = 16
+      Top = 4
+      Width = 41
+      Caption = 'Diffuse:'
+      ParentColor = False
+      OnMouseUp = FormMouseUp
+    end
+    object Label2: TLabel
+      Left = 7
+      Height = 16
+      Top = 82
+      Width = 99
+      Caption = 'Attenuation Linear'
+      ParentColor = False
+      OnMouseUp = FormMouseUp
+    end
+    object Label3: TLabel
+      Left = 7
+      Height = 16
+      Top = 121
+      Width = 85
+      Caption = 'Attenuation Exp'
+      ParentColor = False
+      OnMouseUp = FormMouseUp
+    end
+    object attenExp: TTrackBar
+      Left = 7
+      Height = 23
+      Top = 134
+      Width = 328
+      Max = 100
+      OnChange = diffuseChange
+      Position = 10
+      OnMouseUp = FormMouseUp
+      TabOrder = 2
+    end
+    object Label4: TLabel
+      Left = 7
+      Height = 16
+      Top = 40
+      Width = 98
+      Caption = 'Attenuation Const'
+      ParentColor = False
+      OnMouseUp = FormMouseUp
+    end
+    object attenConst: TTrackBar
+      Left = 7
+      Height = 23
+      Top = 55
+      Width = 328
+      Max = 500
+      OnChange = diffuseChange
+      Position = 0
+      OnMouseUp = FormMouseUp
+      TabOrder = 3
+    end
+    object Label5: TLabel
+      Left = 217
+      Height = 16
+      Top = 0
+      Width = 108
+      Caption = 'R-Click to pick color'
+      ParentColor = False
+      OnMouseUp = FormMouseUp
+    end
+  end
+  object ColorDialog1: TColorDialog
+    Color = clBlack
+    CustomColors.Strings = (
+      'ColorA=000000'
+      'ColorB=000080'
+      'ColorC=008000'
+      'ColorD=008080'
+      'ColorE=800000'
+      'ColorF=800080'
+      'ColorG=808000'
+      'ColorH=808080'
+      'ColorI=C0C0C0'
+      'ColorJ=0000FF'
+      'ColorK=00FF00'
+      'ColorL=00FFFF'
+      'ColorM=FF0000'
+      'ColorN=FF00FF'
+      'ColorO=FFFF00'
+      'ColorP=FFFFFF'
+      'ColorQ=C0DCC0'
+      'ColorR=F0CAA6'
+      'ColorS=F0FBFF'
+      'ColorT=A4A0A0'
+    )
+    left = 191
+    top = 49
+  end
+end

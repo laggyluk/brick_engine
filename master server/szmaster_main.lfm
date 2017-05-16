@@ -1,0 +1,97 @@
+object Form1: TForm1
+  Left = 319
+  Height = 339
+  Top = 240
+  Width = 502
+  Caption = 'Form1'
+  ClientHeight = 339
+  ClientWidth = 502
+  OnClose = FormClose
+  OnCreate = FormCreate
+  LCLVersion = '1.2.0.2'
+  object memoLog: TMemo
+    Left = 0
+    Height = 90
+    Top = 249
+    Width = 502
+    Align = alBottom
+    Lines.Strings = (
+      'memoLog'
+    )
+    TabOrder = 0
+  end
+  object select: TButton
+    Left = 128
+    Height = 25
+    Top = 80
+    Width = 75
+    Caption = 'select'
+    OnClick = selectClick
+    TabOrder = 1
+  end
+  object connectBtn: TButton
+    Left = 20
+    Height = 25
+    Top = 82
+    Width = 75
+    Caption = 'connectBtn'
+    OnClick = connectBtnClick
+    TabOrder = 2
+  end
+  object roomsLabel: TLabel
+    Left = 8
+    Height = 20
+    Top = 8
+    Width = 78
+    Caption = 'roomsLabel'
+    ParentColor = False
+  end
+  object Button1: TButton
+    Left = 62
+    Height = 25
+    Top = 164
+    Width = 75
+    Caption = 'Button1'
+    OnClick = Button1Click
+    TabOrder = 3
+  end
+  object MySqlConnection: TMySQL55Connection
+    Connected = False
+    LoginPrompt = False
+    DatabaseName = 'szesciany'
+    KeepConnection = True
+    Params.Strings = (
+      'Port=3306'
+    )
+    Password = 'Szmata666'
+    Transaction = SQLTransaction1
+    UserName = 'master_server'
+    HostName = 'localhost'
+    LogEvents = []
+    left = 296
+    top = 64
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = False
+    Action = caNone
+    Database = MySqlConnection
+    left = 296
+    top = 120
+  end
+  object Query: TSQLQuery
+    FieldDefs = <>
+    Database = MySqlConnection
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'SELECT * FROM `users`'
+    )
+    Params = <>
+    left = 296
+    top = 176
+  end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    left = 296
+    top = 8
+  end
+end

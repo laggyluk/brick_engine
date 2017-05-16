@@ -1,0 +1,26 @@
+<Root>
+  <item0 name="Root" type="2" func="2" params="" notes="" sub="false" skip="false" x="512" y="41">
+    <item1 name="loop" type="1" func="1" params="" notes="" sub="false" skip="false" x="-6" y="58">
+      <item2 name="find enemy" type="0" func="" params="" notes="" sub="false" skip="false" x="-207" y="72">
+        <item3 name="find target" type="6" func="findEnemyInSight" params="" notes="target is in range" sub="false" skip="false" x="-221" y="57"/>
+        <item4 name="follow path" type="6" func="followPath" params="" notes="will fail on first visit because there's no path yet" sub="false" skip="false" x="-180" y="123"/>
+        <item5 name="find path to enemy" type="6" func="findPathToEnemy" params="" notes="use path manager to get path to nearest player" sub="false" skip="false" x="-64" y="165"/>
+        <item6 name="idle around" type="1" func="1" params="" notes="" sub="false" skip="false" x="85" y="177">
+          <item7 name="wonder around" type="6" func="idleAroundPoint" params="12" notes="" sub="false" skip="false" x="-169" y="89"/>
+          <item8 name="wait" type="6" func="wait" params="3&#xA;5" notes="" sub="false" skip="false" x="73" y="93"/>
+        </item6>
+      </item2>
+      <item9 name="combat" type="1" func="1" params="" notes="" sub="false" skip="false" x="142" y="60">
+        <item10 name="got target?" type="7" func="gotTarget" params="" notes="" sub="false" skip="false" x="-128" y="70"/>
+        <item11 name="attack" type="1" func="2" params="" notes="" sub="false" skip="false" x="-28" y="97">
+          <item12 name="melee attack" type="6" func="melee" params="" notes="" sub="false" skip="false" x="-77" y="93"/>
+          <item13 name="shoot loop" type="1" func="" params="" notes="" sub="false" skip="false" x="52" y="97">
+            <item14 name="shoot" type="6" func="shoot" params="" notes="" sub="false" skip="false" x="-53" y="74"/>
+            <item15 name="delay" type="6" func="wait" params="1&#xA;2" notes="" sub="false" skip="false" x="64" y="77"/>
+          </item13>
+        </item11>
+        <item16 name="target still alive?" type="7" func="" params="" notes="" sub="false" skip="true" x="127" y="99"/>
+      </item9>
+    </item1>
+  </item0>
+</Root>

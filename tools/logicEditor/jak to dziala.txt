@@ -1,0 +1,9 @@
+konfig panel ma kontrolki dodane ze skryptu scripts/ui.lua
+
+checkbox z za³o¿enia s³u¿y do ustawiania flagi 'skip' node. node który ma pole 'text' takie samo
+jak name checkboxa jest z nim zlinkowany
+
+inne kontrolki mog¹ byæ zagadywane z wnêtrza lua przez getcontrolValue('nazwa kontrolki')
+o aktualny stan natomiast tagi s¹ raczej indywidualne dla funkcji ni¿ jakoœ uniwersalnie ustalone
+
+przy zamykaniu bota skrypt ui jest zapisywany spowrotem wiec robienie komentow nie ma tam sensu
