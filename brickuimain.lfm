@@ -19,7 +19,7 @@ object UI: TUI
   OnMouseWheel = FormMouseWheel
   OnResize = FormResize
   ShowInTaskBar = stAlways
-  LCLVersion = '1.6.0.4'
+  LCLVersion = '1.6.4.0'
   Visible = True
   object initTimer: TTimer
     Enabled = False

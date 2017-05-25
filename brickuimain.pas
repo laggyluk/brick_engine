@@ -140,7 +140,7 @@ begin
   if not InitOpenGL then Application.Terminate;
   {$ifdef windows}
     RC:=CreateRenderingContext(DC,[opDoubleBuffered],32, 32, 8,0,0, 0);
-    //RC:=CreateRenderingContextVersion(DC,[opDoubleBuffered],4,0,true,32, 24, 0,0,0, 0);
+    //RC:=CreateRenderingContextVersion(DC,[opDoubleBuffered],4,0,true,32, 24, 8,0,0, 0);
     ActivateRenderingContext(DC, RC);
     PrevWndProc:=Windows.WNDPROC(SetWindowLongPtr(Self.Handle,GWL_WNDPROC,PtrInt(@WndCallback)));
   {$endif}

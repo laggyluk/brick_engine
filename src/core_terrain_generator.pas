@@ -781,7 +781,7 @@ begin
   ini:=tinifile.Create(fiile);
   for i:=TBlockType(btNone)+2 to TBlockType(btMax)-1 do begin
     s := GetEnumName(TypeInfo(eBlockTypes),TBlockType(i));
-    check it sprawdz to
+    //check it sprawdz to
     c:= format('%.3f;%.3f;%.3f;%.3f;',[
       blockColors[eBlockTypes(i)][0],
       blockColors[eBlockTypes(i)][1],
